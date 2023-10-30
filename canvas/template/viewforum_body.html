@@ -70,54 +70,6 @@
 	<!-- INCLUDE forumlist_body.html -->
 <!-- ENDIF -->
 
-
-<!-- IF S_DISPLAY_POST_INFO or .pagination or TOTAL_POSTS or TOTAL_TOPICS -->
-	<div class="action-bar top">
-
-	<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
-		<div class="buttons">
-			<!-- EVENT viewforum_buttons_top_before -->
-
-			<!-- IF S_IS_LOCKED -->
-			<a href="{U_POST_NEW_TOPIC}" class="btn btn-danger btn-createnew locked" title="{L_FORUM_LOCKED}">
-				<i class="fi fi-lock"></i> {L_BUTTON_FORUM_LOCKED}
-			</a>
-			<!-- ELSE -->
-			<a href="{U_POST_NEW_TOPIC}" class="btn btn-success btn-createnew" title="{L_POST_TOPIC}">
-				<i class="fi fi-plus"></i> {L_BUTTON_NEW_TOPIC}
-			</a>
-			<!-- ENDIF -->
-
-			<!-- EVENT viewforum_buttons_top_after -->
-		</div>
-	<!-- ENDIF -->
-
-	<!-- IF S_DISPLAY_SEARCHBOX -->
-		<div class="search-box" role="search">
-			<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
-			<div class="input-group">
-				<input class="search form-control" type="search" name="keywords" id="search_keywords" size="20" placeholder="{L_SEARCH_FORUM}" />
-				<span class="input-group-btn">
-				<button class="btn btn-default" type="submit" title="{L_SEARCH}"><i class="fi <!-- IF S_CONTENT_FLOW_END == 'right' -->fi-arrow-right<!-- ELSE -->fi-magnify<!-- ENDIF -->"></i></button>
-				<a href="{U_SEARCH}" class="btn btn-default" title="{L_SEARCH_ADV}"><i class="fi fi-settings"></i></a>
-				</span>
-			</div>
-			{S_SEARCH_LOCAL_HIDDEN_FIELDS}
-			</form>
-		</div>
-	<!-- ENDIF -->
-
-	<div class="right-side">
-		<!-- IF not S_IS_BOT and U_MARK_TOPICS and .topicrow --><a href="{U_MARK_TOPICS}" class="btn mark btn-default mark-read" accesskey="m" data-ajax="mark_topics_read"><i class="fi fi-check-all"></i> {L_MARK_TOPICS_READ}</a> <!-- ENDIF -->
-		<!--{TOTAL_TOPICS}-->
-		<!-- IF .pagination -->
-			<!-- INCLUDE pagination.html -->
-		<!-- ENDIF -->
-	</div>
-
-	</div>
-<!-- ENDIF -->
-
 <!-- IF S_NO_READ_ACCESS -->
 
 	<div class="panel">
@@ -180,6 +132,20 @@
 			<span class="topic-count">{TOTAL_TOPICS}</span>
 			<!-- ENDIF -->
 		</div>
+	
+		<!-- IF S_SELECT_SORT_DAYS and not S_DISPLAY_ACTIVE -->
+		<form method="post" action="{S_FORUM_ACTION}">
+			<fieldset class="display-options">
+		<!-- IF not S_IS_BOT -->
+				<label>{L_DISPLAY_TOPICS}{L_COLON} {S_SELECT_SORT_DAYS}</label>
+				<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label>
+				<label>{S_SELECT_SORT_DIR}</label>
+				<button type="submit" title="{L_GO}" class="btn btn-link"><i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
+		<!-- ENDIF -->
+			</fieldset>
+		</form>
+	<!-- ENDIF -->
+
 		<ul class="itemlist itemlist--topics itemlist--topics--full itemlist--has-colbar">
 		<!-- IF 0 -->
 		<li class="itemlist__item itemlist__item--colbar">
@@ -275,22 +241,22 @@
 				<!-- IF ST_modern_item_stats === '0' -->
 				<div class="item-col-stats">
 					<span class="item-stat item-stat--posts">
-						<span class="item-stat__count"><span class="formatted-numcounter">{topicrow.REPLIES}</span></span>
 						<span class="item-stat__label">{L_REPLIES}</span>
+						<span class="item-stat__count"><span class="formatted-numcounter">{topicrow.REPLIES}</span></span>
 					</span>
 					<span class="item-stat item-stat--views">
-						<span class="item-stat__count"><span class="formatted-numcounter">{topicrow.VIEWS}</span></span>
 						<span class="item-stat__label">{L_VIEWS}</span>
+						<span class="item-stat__count"><span class="formatted-numcounter">{topicrow.VIEWS}</span></span>
 					</span>
 				</div>
 				<!-- ELSE -->
 				<div class="item-col-stats">
 					<span class="item-stat--v2 item-stat--views">
-						<span class="item-stat__count"><span class="formatted-numcounter">{topicrow.VIEWS}</span></span>
 						<span class="item-stat__label">{L_VIEWS}</span>
+						<span class="item-stat__count"><span class="formatted-numcounter">{topicrow.VIEWS}</span></span>
 					</span>
 					<span class="item-stat--v2 item-stat--posts has-tooltip" data-placement="left" title="{topicrow.REPLIES} {L_REPLIES}">
-						<span class="item-stat__label"><i class="fi fi-comment-multiple-outline"></i></span>
+						<span class="item-stat__label">{L_REPLIES}</span>
 						<span class="item-stat__count"><span class="formatted-numcounter">{topicrow.REPLIES}</span></span>
 					</span>
 				</div>
@@ -321,19 +287,6 @@
 	<!-- ENDIF -->
 <!-- END topicrow -->
 
-<!-- IF S_SELECT_SORT_DAYS and not S_DISPLAY_ACTIVE -->
-	<form method="post" action="{S_FORUM_ACTION}">
-		<fieldset class="display-options">
-	<!-- IF not S_IS_BOT -->
-			<label>{L_DISPLAY_TOPICS}{L_COLON} {S_SELECT_SORT_DAYS}</label>
-			<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label>
-			<label>{S_SELECT_SORT_DIR}</label>
-			<button type="submit" title="{L_GO}" class="btn btn-link"><i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
-	<!-- ENDIF -->
-		</fieldset>
-	</form>
-<!-- ENDIF -->
-
 <!-- IF .topicrow and not S_DISPLAY_ACTIVE -->
 	<div class="action-bar bottom">
 		<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
@@ -352,6 +305,21 @@
 
 				<!-- EVENT viewforum_buttons_bottom_after -->
 			</div>
+		<!-- ENDIF -->
+
+		<!-- IF S_DISPLAY_SEARCHBOX -->
+		<div class="search-box" role="search">
+			<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
+			<div class="input-group">
+				<input class="search form-control" type="search" name="keywords" id="search_keywords" size="20" placeholder="" />
+				<span class="input-group-btn">
+				<button class="btn btn-secondary" type="submit" title="{L_SEARCH}">{L_SEARCH}</button>
+				<a href="{U_SEARCH}" class="btn btn-default" title="{L_SEARCH_ADV}"><i class="fi fi-settings"></i></a>
+				</span>
+			</div>
+			{S_SEARCH_LOCAL_HIDDEN_FIELDS}
+			</form>
+		</div>
 		<!-- ENDIF -->
 
 		<div class="right-side">
