@@ -1,0 +1,168 @@
+<!-- Nav tabs -->
+<ul class="slickpanel-innernav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#skin__body" role="tab" data-toggle="tab">Body</a></li>
+  <li role="presentation"><a href="#footer" role="tab" data-toggle="tab">Footer</a></li>
+  <li role="presentation"><a href="#misc" role="tab" data-toggle="tab">Misc</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content slickpanel-innernav-content">
+
+  <div role="tabpanel" class="tab-pane active" id="skin__body">
+    <div class="slickpanel-section">
+
+		<!-- #SETTING: Body background color -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background color</strong>
+				<p>Not visible when container is set to 'wide'</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_body__bgcolor"
+						data-colorchange='["#st-bgimg","background-color"]'
+						value="{ST_body__bgcolor}"
+						data-default="#CACACA" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Body background image URL -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background image</strong>
+				<p>Upload your images to <code>styles/canvas/theme/images/backgrounds</code> and enter the filename here (with extension)</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_body__bgimg_url"
+						data-manipulate='["#st-bgimg","bgimg", "background-image"]'
+						data-default='none'
+						value="{ST_body__bgimg_url}" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Body background-position -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background-position</strong>
+				<p>x and y axis positions e.g. <code>center top</code></p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_body__bgimg_pos"
+						data-manipulate='["html","css", "background-position"]'
+						data-default='center top'
+						value="{ST_body__bgimg_pos}" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Header background-size -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background size</strong>
+				<p>Backgound image sizing. Generally you can leave this empty. Use <code>contain</code> for patterns</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_body__bgimg_size"
+						data-manipulate='["html","css", "background-size"]'
+						data-default='cover'
+						value="{ST_body__bgimg_size}" />
+			</div>
+		</div>
+
+	</div>
+  </div>
+
+
+
+  <div role="tabpanel" class="tab-pane" id="footer">
+    <div class="slickpanel-section">
+
+		<!-- #SETTING: Footer bg color -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background color</strong>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_footer__bgcolor"
+						data-transparency="true"
+						data-colorchange='["{$SELECTOR__footer}","background-color"]'
+						value="{ST_footer__bgcolor}"
+						data-default="#444F62" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Body background image URL -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background image</strong>
+				<p>Upload your images to <code>styles/canvas/theme/images/backgrounds</code> and enter the filename here (with extension)</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_footer__bgimg_url"
+						data-manipulate='["{$SELECTOR__footer}","bgimg" , "background-image"]'
+						value="{ST_footer__bgimg_url}"
+						data-default="none" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Body background-position -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background-position</strong>
+				<p>x and y axis positions e.g. <code>center top</code></p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_footer__bgimg_pos"
+						data-manipulate='["{$SELECTOR__footer}","css" , "background-position"]'
+						value="{ST_footer__bgimg_pos}"
+						data-default="center 10%" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Header background-size -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background size</strong>
+				<p>Backgound image sizing. Generally you can leave this empty. Use <code>contain</code> for patterns</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_footer__bgimg_size"
+						data-manipulate='["{$SELECTOR__footer}","css", "background-size"]'
+						value="{ST_footer__bgimg_size}"
+						data-default="cover" />
+			</div>
+		</div>
+	</div>
+  </div>
+
+
+
+  <div role="tabpanel" class="tab-pane" id="misc">
+	<div class="slickpanel-section">
+
+		<!-- #SETTING: Primary color -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Primary color</strong>
+				<p>Section headers and a few other things</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_colors__primary"
+						data-default="#41454b"
+						data-colorchange='[["{$SELECTOR__colors__primary_bg}","background-color"],["{$SELECTOR__colors__primary_text}","color"],["{$SELECTOR__colors__primary_border}","border-color"]]'
+						value="{ST_colors__primary}" />
+			</div>
+		</div>
+
+
+	</div>
+  </div>
+
+</div>

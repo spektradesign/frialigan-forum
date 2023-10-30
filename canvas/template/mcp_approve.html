@@ -1,0 +1,81 @@
+<!-- IF S_AJAX_REQUEST -->
+
+	<h3>{MESSAGE_TITLE}</h3>
+	<p>{MESSAGE_TEXT}</p>
+
+	<!-- IF S_NOTIFY_POSTER -->
+		<label><input type="checkbox" name="notify_poster" checked="checked" /> <!-- IF S_APPROVE -->{L_NOTIFY_POSTER_APPROVAL}<!-- ELSE -->{L_NOTIFY_POSTER_DISAPPROVAL}<!-- ENDIF --></label>
+	<!-- ENDIF -->
+
+	<!-- IF not S_APPROVE and not S_RESTORE and .reason -->
+		<label><strong>{L_DISAPPROVE_REASON}{L_COLON}</strong>
+		<select name="reason_id">
+			<!-- BEGIN reason --><option value="{reason.ID}"<!-- IF reason.S_SELECTED --> selected="selected"<!-- ENDIF -->>{reason.DESCRIPTION}</option><!-- END reason -->
+		</select></label>
+
+		<label><strong>{L_MORE_INFO}{L_COLON}</strong><br /><span>{L_CAN_LEAVE_BLANK}</span>
+			<textarea class="inputbox" name="reason" id="reason" rows="4" cols="40">{REASON}</textarea>
+		</label>
+	<!-- ENDIF -->
+
+	<fieldset class="submit-buttons">
+		<input type="button" name="confirm" value="{YES_VALUE}" class="button1" />&nbsp;
+		<input type="button" name="cancel" value="{L_NO}" class="button2" />
+	</fieldset>
+
+<!-- ELSE -->
+
+<!-- INCLUDE simple_header.html -->
+<a href="{U_INDEX}" class="simplepage__return"><i class="fi fi-chevron-{S_CONTENT_FLOW_BEGIN}"></i> {L_BACK_TO_PREV}</a>
+<div class="simplepage__box">
+<form class="st-form" id="confirm" action="{S_CONFIRM_ACTION}" method="post">
+	{S_FORM_TOKEN}
+	
+	<h2 class="page-title">{MESSAGE_TITLE}</h2>
+	
+	<!-- IF ADDITIONAL_MSG --><p class="alert alert-danger">{ADDITIONAL_MSG}</p><!-- ENDIF -->
+
+	<fieldset class="st-form__fieldset">
+		
+		<!-- IF not S_APPROVE and not S_RESTORE and .reason -->
+			<!-- IF S_NOTIFY_POSTER -->
+				<dl>
+					<dt>&nbsp;</dt>
+					<dd>
+						<label><input type="checkbox" name="notify_poster" checked="checked" /> <!-- IF S_APPROVE -->{L_NOTIFY_POSTER_APPROVAL}<!-- ELSE -->{L_NOTIFY_POSTER_DISAPPROVAL}<!-- ENDIF --></label>
+					</dd>
+				</dl>
+			<!-- ENDIF -->
+			<dl>
+				<dt><label>{L_DISAPPROVE_REASON}{L_COLON}</label></dt>
+				<dd><select name="reason_id">
+					<!-- BEGIN reason --><option value="{reason.ID}"<!-- IF reason.S_SELECTED --> selected="selected"<!-- ENDIF -->>{reason.DESCRIPTION}</option><!-- END reason -->
+					</select>
+				</dd>
+			</dl>
+			
+			<dl>
+				<dt><label for="reason">{L_MORE_INFO}{L_COLON}</label><br /><span>{L_CAN_LEAVE_BLANK}</span></dt>
+				<dd><textarea class="inputbox" name="reason" id="reason" rows="4" cols="40">{REASON}</textarea></dd>
+			</dl>
+		<!-- ELSE -->
+			<!-- IF S_NOTIFY_POSTER -->
+				<div class="simplepage__checkbox">
+					<label><input type="checkbox" name="notify_poster" checked="checked" /> <!-- IF S_APPROVE -->{L_NOTIFY_POSTER_APPROVAL}<!-- ELSE -->{L_NOTIFY_POSTER_DISAPPROVAL}<!-- ENDIF --></label>
+				</div>
+			<!-- ENDIF -->
+		<!-- ENDIF -->
+		
+	</fieldset>
+	
+	<div class="submit-buttons">
+		<strong class="simplepage__message">{MESSAGE_TEXT}</strong>
+		{S_HIDDEN_FIELDS}<button type="submit" name="confirm" value="{YES_VALUE}" class="btn btn-success"><i class="fi fi-check"></i> {YES_VALUE}</button>&nbsp; 
+		<button type="submit" name="cancel" value="{L_NO}" class="btn btn-default"><i class="fi fi-close"></i> {L_NO}</button>
+	</div>
+
+</form>
+</div>
+
+<!-- INCLUDE simple_footer.html -->
+<!-- ENDIF -->

@@ -1,0 +1,158 @@
+
+<!-- BEGIN forumrow -->
+	<!-- IF (forumrow.S_IS_CAT and not forumrow.S_FIRST_ROW) or forumrow.S_NO_CAT  -->
+		</ol>
+		</div><!-- category-inner END -->
+	</div><!-- category-wrapper END -->
+	<!-- ENDIF -->
+
+	<!-- EVENT forumlist_body_category_header_before -->
+	<!-- IF forumrow.S_IS_CAT or forumrow.S_FIRST_ROW  or forumrow.S_NO_CAT  -->
+	<div class="category-wrapper">
+		<div class="category-header">
+			<!-- IF forumrow.S_IS_CAT --><a class="category-title" href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a><!-- ELSE -->{L_FORUMS}<!-- ENDIF -->
+			<a href="javascript:void(0)" class="close" data-toggle="collapse" data-target="#forum-{forumrow.FORUM_ID}" aria-expanded="true" aria-controls="forum-{forumrow.FORUM_ID}"></a>
+		</div>
+		
+		<div class="category-inner collapse in" id="forum-{forumrow.FORUM_ID}">
+		<ol class="itemlist itemlist--forums itemlist--forums--full">
+	<!-- ENDIF -->
+	<!-- EVENT forumlist_body_category_header_after -->
+
+	<!-- IF not forumrow.S_IS_CAT -->
+		<!-- EVENT forumlist_body_forum_row_before -->
+			<li class="itemlist__item {forumrow.FORUM_IMG_STYLE} <!-- IF forumrow.AVATAR_IMG -->has-lastpostavatar<!-- ENDIF -->">
+				<div class="item-inner">
+				<!-- EVENT forumlist_body_forum_row_prepend -->
+				
+				<!-- IF forumrow.FORUM_IMAGE -->
+				<div class="item-col-icon forum-image" title="{forumrow.FORUM_FOLDER_IMG_ALT}">
+					{forumrow.FORUM_IMAGE}
+				<!-- ELSE -->
+				<div class="item-col-icon" title="{forumrow.FORUM_FOLDER_IMG_ALT}">
+					<i class="fi item-icon"></i>
+				<!-- ENDIF -->
+					
+					<!-- IF forumrow.S_UNREAD_FORUM --><a href="{forumrow.U_VIEWFORUM}" class="icon-link"></a><!-- ENDIF -->
+				</div>
+				
+				<div class="item-col-main">
+					
+					<a class="item-title" href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a>
+					<!-- IF forumrow.U_UNAPPROVED_TOPICS -->
+					<a href="{forumrow.U_UNAPPROVED_TOPICS}" class="item-ti item-ti--unapproved2 has-tooltip" data-placement="right" title="{L_TOPICS_UNAPPROVED}"><i class="fi fi-alert"></i></a>
+					<!-- ELSEIF forumrow.U_UNAPPROVED_POSTS -->
+					<a href="{forumrow.U_UNAPPROVED_POSTS}" class="item-ti item-ti--unapproved2 has-tooltip" data-placement="right" title="{L_POSTS_UNAPPROVED_FORUM}"><i class="fi fi-alert"></i></a>
+					<!-- ENDIF -->
+					
+					<!-- IF .forumrow.subforum and forumrow.S_LIST_SUBFORUMS -->
+						<div class="subforums">
+							<!-- EVENT forumlist_body_subforums_before -->
+							<span class="subforum-stem" title="{forumrow.L_SUBFORUM_STR}"></span>
+							<!-- BEGIN subforum -->
+								<a href="{forumrow.subforum.U_SUBFORUM}" class="subforum<!-- IF forumrow.subforum.S_UNREAD --> unread<!-- ELSE --> read<!-- ENDIF -->" title="<!-- IF forumrow.subforum.S_UNREAD -->{L_UNREAD_POSTS}<!-- ELSE -->{L_NO_UNREAD_POSTS}<!-- ENDIF -->">{forumrow.subforum.SUBFORUM_NAME}</a><!-- IF not forumrow.subforum.S_LAST_ROW -->{L_COMMA_SEPARATOR}<!-- ENDIF -->
+							<!-- END subforum -->
+							<!-- EVENT forumlist_body_subforums_after -->
+						</div>
+					<!-- ENDIF -->
+					
+					<!-- IF forumrow.FORUM_DESC -->
+					<span class="item-info">{forumrow.FORUM_DESC}</span>
+					<!-- ENDIF -->
+					
+					<!-- IF forumrow.CLICKS -->
+						<span class="item-info--inline">{L_REDIRECTS}{L_COLON} <span class="formatted-numcounter">{forumrow.CLICKS}</span></span>
+					<!-- ELSEIF not forumrow.S_IS_LINK -->
+					
+						<span class="item-lastpost--inline">
+							<!-- IF forumrow.LAST_POST_TIME -->
+								<span class="lastpost-label-inline">{L_LAST_POST}<!--{L_COLON}--></span>
+								<!--<a href="{forumrow.U_LAST_POST}" title="{forumrow.LAST_POST_SUBJECT}" class="lastsubject-inline">{forumrow.LAST_POST_SUBJECT_TRUNCATED}</a>-->
+								{L_POST_BY_AUTHOR} {forumrow.LAST_POSTER_FULL}{L_COMMA_SEPARATOR}
+								<a href="{forumrow.U_LAST_POST}"><span class="timestamp">{forumrow.LAST_POST_TIME}</span></a>
+							<!-- ELSE -->
+								{L_NO_POSTS}
+							<!-- ENDIF -->
+						</span>
+					
+						<div class="item-stats--inline">
+							<span class="item-stat item-stat--topics">
+								<span class="item-stat__label"><!-- IF forumrow.TOPICS == 1 -->{L_TOPIC}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></span>
+								<span class="item-stat__count formatted-numcounter">{forumrow.TOPICS}</span>
+							</span>
+							<span class="item-stat item-stat--posts">
+								<span class="item-stat__count formatted-numcounter">{forumrow.POSTS}</span>
+								<span class="item-stat__label"><!-- IF forumrow.POSTS == 1 -->{L_POST}<!-- ELSE -->{L_POSTS}<!-- ENDIF --></span>
+							</span>
+						</div>
+					<!-- ENDIF -->
+					
+					
+					<!-- IF forumrow.MODERATORS -->
+					<span class="forum-moderators"><strong>{forumrow.L_MODERATOR_STR}{L_COLON}</strong> {forumrow.MODERATORS}</span>
+					<!-- ENDIF -->
+					
+				</div>
+				
+				<!-- IF S_ENABLE_FEEDS and forumrow.S_FEED_ENABLED -->
+				<a class="item-col-feed" title="{L_FEED} - {forumrow.FORUM_NAME}" href="{U_FEED}?f={forumrow.FORUM_ID}"><i class="fi fi-rss"></i></a>
+				<!-- ENDIF -->
+				
+				<!-- IF forumrow.CLICKS -->
+				<!--<div class="forum-stats"></div>-->
+				<div class="item-col-lastpost">
+					<span class="redirect-counter">{L_REDIRECTS}{L_COLON} <span class="formatted-numcounter">{forumrow.CLICKS}</span></span>
+				</div>
+				
+				<!-- ELSEIF not forumrow.S_IS_LINK -->
+				<div class="item-col-stats">
+					<!-- IF forumrow.LAST_POST_TIME -->
+					<span class="item-stat item-stat--topics">
+						<span class="item-stat__label"><!-- IF forumrow.TOPICS == 1 -->{L_TOPIC}<!-- ELSE -->{L_TOPICS}<!-- ENDIF --></span>
+						<span class="item-stat__count formatted-numcounter">{forumrow.TOPICS}</span>
+					</span>
+					<span class="item-stat item-stat--posts">
+						<span class="item-stat__count formatted-numcounter">{forumrow.POSTS}</span>
+						<span class="item-stat__label"><!-- IF forumrow.POSTS == 1 -->{L_POST}<!-- ELSE -->{L_POSTS}<!-- ENDIF --></span>
+					</span>
+					<!-- ENDIF -->
+				</div>
+				
+				<div class="item-col-lastpost">
+					
+					<!-- IF forumrow.LAST_POST_TIME -->
+						<!-- IF forumrow.S_DISPLAY_SUBJECT -->
+							<!-- EVENT forumlist_body_last_post_title_prepend -->
+							<a href="{forumrow.U_LAST_POST}" title="{forumrow.LAST_POST_SUBJECT}" class="item-lastpost__title">{forumrow.LAST_POST_SUBJECT_TRUNCATED}</a>
+						<!-- ENDIF -->
+						
+						<div class="item-lastpost__info">
+							{L_POST_BY_AUTHOR} {forumrow.LAST_POSTER_FULL}
+							<span class="item-lastpost__time timestamp">{forumrow.LAST_POST_TIME}</span>
+						</div>
+					<!-- ELSE -->
+					{L_NO_POSTS}
+					<!-- ENDIF -->
+				</div>
+				
+				<!-- ENDIF -->
+			<!-- EVENT forumlist_body_forum_row_append -->
+			</div>
+			</li>
+		<!-- EVENT forumlist_body_forum_row_after -->
+	<!-- ENDIF -->
+
+	<!-- IF forumrow.S_LAST_ROW -->
+		</ol>
+		</div><!-- category-inner END -->
+	</div><!-- category-wrapper END -->
+	<!-- EVENT forumlist_body_last_row_after -->
+	<!-- ENDIF -->
+
+<!-- BEGINELSE -->
+<div class="panel panel-default no-forums">
+		<div class="panel-body">
+				<strong>{L_NO_FORUMS}</strong>
+		</div>
+</div>
+<!-- END forumrow -->

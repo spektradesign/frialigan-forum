@@ -1,0 +1,18 @@
+<!-- IF not $st_widgetshown_stats -->
+<!-- IF SCRIPT_NAME == 'index' -->
+<div class="sidebar-widget statistics">
+<div class="widget-header">
+  {L_STATISTICS}
+</div>
+<div class="widget-content collapse in" id="widget-statistics">
+		<!-- EVENT index_body_block_stats_prepend -->
+		<!-- IF TOTAL_TOPICS --><p>{TOTAL_TOPICS}</p><!-- ENDIF -->
+		<!-- IF TOTAL_POSTS --><p>{TOTAL_POSTS}</p><!-- ENDIF -->
+		<!-- IF TOTAL_USERS --><p>{TOTAL_USERS}</p><!-- ENDIF -->
+		<!-- IF NEWEST_USER --><p>{NEWEST_USER}</p><!-- ENDIF -->
+		<!-- EVENT index_body_block_stats_append -->
+</div>
+</div>
+<!-- ENDIF -->
+<!-- DEFINE $st_widgetshown_stats = true -->
+<!-- ENDIF -->

@@ -1,0 +1,114 @@
+<style type="text/css" id="st_userconfig_CSS">
+  /* slickpanel overrides. please do not eat */
+  
+  /* Typography */
+  <!-- IF ST_type__body_fontfamily -->
+  body {
+	font-family: {ST_type__body_fontfamily};
+  }
+  <!-- ENDIF -->
+  
+  <!-- IF ST_container__width -->
+  {$SELECTOR__container_width} {
+	max-width: {ST_container__width}px;
+  }
+  <!-- ENDIF -->
+  
+  <!-- IF ST_type__navbar_fontfamily -->
+  .navigation > li > a {
+	font-family: {ST_type__navbar_fontfamily};
+  }
+  <!-- ENDIF -->
+  
+  .postbody .content {
+	<!-- IF ST_type__content_fontfamily -->
+	font-family: {ST_type__content_fontfamily};
+	<!-- ENDIF -->
+	<!-- IF ST_type__content_fontsize -->
+	font-size: {ST_type__content_fontsize}px;
+	<!-- ENDIF -->
+  }
+  
+  /* text logo */
+  {$SELECTOR__textlogo} {
+	<!-- IF ST_logo__fontfamily -->
+	font-family: {ST_logo__fontfamily};<!-- ENDIF -->
+	color: {ST_logo__color};
+	<!-- IF ST_logo__fontsize -->
+	font-size: {ST_logo__fontsize}px;
+	<!-- ENDIF -->
+	<!-- IF ST_logo__fontweight -->
+	font-weight: {ST_logo__fontweight};
+	<!-- ENDIF -->
+  }
+  
+  /* image logo */
+  {$SELECTOR__imagelogo} {
+	max-width: {ST_logo__image_width}px;
+  }
+  
+  /* colors */
+  <!-- IF ST_colors__primary -->
+  {$SELECTOR__colors__primary_bg} {
+	background-color: {ST_colors__primary}
+  }
+  {$SELECTOR__colors__primary_text} {
+	color: {ST_colors__primary}
+  } 
+  {$SELECTOR__colors__primary_border} {
+	border-color: {ST_colors__primary}
+  }
+  <!-- ENDIF -->
+
+  /* header */
+  {$SELECTOR__mainheader} {
+	background-color: {ST_header__bgcolor};
+	
+	<!-- IF ST_header__bgimg_url -->
+	background-image: <!-- IF ST_header__bgimg_url == 'none' -->none<!-- ELSE -->url("{T_THEME_PATH}/images/backgrounds/{ST_header__bgimg_url}")<!-- ENDIF -->;
+	<!-- ENDIF -->
+	
+	<!-- IF ST_header__height -->
+	height: {ST_header__height}px;
+	<!-- ENDIF -->
+	
+	background-position: {ST_header__bgimg_pos};
+	
+	<!-- IF ST_header__bgimg_size -->
+	background-size: {ST_header__bgimg_size};
+	<!-- ENDIF -->
+  }
+  
+  /* Search */
+  {$SELECTOR__search} {
+	background-color: {ST_search__bgcolor};
+	color: {ST_search__color};
+  }
+  {$SELECTOR__search_placeholder} {
+	color: {ST_search__placeholder};
+  }
+  .quicksearch {$SELECTOR__search_focus} {
+	background-color: {ST_search__focusbgcolor};
+  }
+  
+  /* footer */
+  {$SELECTOR__footer} {
+	background-color: {ST_footer__bgcolor};
+	
+	<!-- IF ST_footer__bgimg_url -->
+	background-image: <!-- IF ST_footer__bgimg_url == 'none' -->none<!-- ELSE -->url("{T_THEME_PATH}/images/backgrounds/{ST_footer__bgimg_url}")<!-- ENDIF -->;
+	<!-- ENDIF -->
+	
+	background-position: {ST_footer__bgimg_pos};
+	
+	<!-- IF ST_footer__bgimg_size -->
+	background-size: {ST_footer__bgimg_size};
+	<!-- ENDIF -->
+  }
+
+  /* Post Author Label */
+  .topic-author-label .label {
+  	background-color: {ST_topicAuthorLabel__bg};
+  }
+  
+</style>

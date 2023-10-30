@@ -1,0 +1,47 @@
+<a href="javascript:void(0)" class="offcanvas-toggle offcanvas-navigation-toggle">
+    <span class="icon-menu-bars"><span class="bar-1"></span><span class="bar-2"></span><span class="bar-3"></span></span>
+</a>
+
+<ul class="navigation top-nav list-unstyled">
+
+    <li class="nav-item quick-links dd-container">
+		<a href="javascript:void(0)" id="quickLinksdrop" title="{L_QUICK_LINKS}" class="quick-links-dropdown-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="icon-menu-bars"><span class="bar-1"></span><span class="bar-2"></span><span class="bar-3"></span></span>
+			<span class="quick-links-label">{L_QUICK_LINKS}</span>
+        </a>
+        <ul class="quick-links-dropdown dropdown-menu" role="menu" aria-labelledby="quickLinksdrop">
+            <!-- EVENT navbar_header_quick_links_before -->
+
+            <!-- IF S_DISPLAY_SEARCH -->
+                <!-- IF S_REGISTERED_USER -->
+				<li role="presentation"><a href="{U_SEARCH_SELF}" role="menuitem" tabindex="-1">{L_SEARCH_SELF}</a></li>
+				<!-- ENDIF -->
+
+                <!-- IF S_USER_LOGGED_IN -->
+				<li role="presentation"><a href="{U_SEARCH_NEW}" role="menuitem" tabindex="-1">{L_SEARCH_NEW}</a></li>
+				<!-- ENDIF -->
+
+                <!-- IF S_LOAD_UNREADS -->
+				<li role="presentation"><a href="{U_SEARCH_UNREAD}" role="menuitem" tabindex="-1">{L_SEARCH_UNREAD}</a></li>
+				<!-- ENDIF -->
+				<li role="presentation"><a href="{U_SEARCH_UNANSWERED}" role="menuitem" tabindex="-1">{L_SEARCH_UNANSWERED}</a></li>
+				<li role="presentation"><a href="{U_SEARCH_ACTIVE_TOPICS}" role="menuitem" tabindex="-1">{L_SEARCH_ACTIVE_TOPICS}</a></li>
+                <li role="presentation" class="divider"></li>
+				<li role="presentation"><a href="{U_SEARCH}" role="menuitem" tabindex="-1">{L_SEARCH}</a></li>
+			<!-- ENDIF -->
+
+            <!--<li role="presentation"><a href="{U_FAQ}" rel="help" title="{L_FAQ_EXPLAIN}" role="menuitem" tabindex="-1">{L_FAQ}</a></li>-->
+
+            <!-- IF not S_IS_BOT and (S_DISPLAY_MEMBERLIST or U_TEAM) -->
+				<!-- IF S_DISPLAY_MEMBERLIST --><li role="presentation"><a href="{U_MEMBERLIST}" role="menuitem" tabindex="-1">{L_MEMBERLIST}</a></li><!-- ENDIF -->
+				<!-- IF U_TEAM --><li role="presentation"><a tabindex="-1" href="{U_TEAM}" role="menuitem" tabindex="-1">{L_THE_TEAM}</a></li><!-- ENDIF -->
+			<!-- ENDIF -->
+
+            <!-- EVENT navbar_header_quick_links_after -->
+        </ul>
+	</li>
+
+    <!-- EVENT overall_header_navigation_prepend -->
+    <!-- INCLUDE custom/navlinks.html -->
+	<!-- EVENT overall_header_navigation_append -->
+</ul>

@@ -1,0 +1,354 @@
+<!-- Nav tabs -->
+<ul class="slickpanel-innernav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#header__header" role="tab" data-toggle="tab">Header</a></li>
+  <li role="presentation"><a href="#header__logo" role="tab" data-toggle="tab">Logo</a></li>
+  <li role="presentation"><a href="#header__search" role="tab" data-toggle="tab">Search</a></li>
+  <li role="presentation"><a href="#header__navbar" role="tab" data-toggle="tab">Navbar</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content slickpanel-innernav-content">
+
+
+
+  <div role="tabpanel" class="tab-pane" id="header__search">
+	<div class="slickpanel-section">
+
+		<!-- #SETTING: Search background -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Background</strong>
+				<p>search bar background color</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_search__bgcolor"
+						data-transparency="true"
+						data-colorchange='["{$SELECTOR__search}","background-color"]'
+						value="{ST_search__bgcolor}" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Search focus background -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Focus background</strong>
+				<p>Background on focus (live preview is buggy currently)</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_search__focusbgcolor"
+						data-transparency="true"
+						data-colorchange='["{$SELECTOR__search_focus}","background-color"]'
+						data-default="white"
+						value="{ST_search__focusbgcolor}" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Search text color -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Text color</strong>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_search__color"
+						data-colorchange='["{$SELECTOR__search}","color"]'
+						value="{ST_search__color}" />
+			</div>
+		</div>
+
+		<!-- #SETTING: Search placeholder color -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Placeholder color</strong>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_search__placeholder"
+						data-transparency="true"
+						data-colorchange='["{$SELECTOR__search_placeholder}","color"]'
+						value="{ST_search__placeholder}" />
+			</div>
+		</div>
+
+	</div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="header__navbar">
+	<div class="slickpanel-section">
+
+  <!-- #SETTING: Navbar position -->
+  <div class="slickpanel-section__setting">
+      <div class="slickpanel-section__setting__label">
+          <strong>Navbar position</strong>
+          <p>Place navbar below or above header</p>
+      </div>
+      <div class="slickpanel-section__setting__input">
+          <select class="form-control"
+              name="ST_navbar__pos"
+			  data-manipulate='[".stickyContainer","navbar_pos"]'
+              data-default='nb-h' value="{ST_navbar__pos}">
+              <option value="nb-h" <!-- IF ST_navbar__pos == 'nb-h'-->selected<!-- ENDIF -->>Above Header</option>
+              <option value="h-nb" <!-- IF ST_navbar__pos == 'h-nb'-->selected<!-- ENDIF -->>Below Header</option>
+          </select>
+      </div>
+  </div>
+
+  <!-- #SETTING: Dark navbar -->
+  <div class="slickpanel-section__setting slickpanel-togglesetting">
+    <div class="slickpanel-section__setting__input">
+      <input type="checkbox"
+           class="st-toggleswitch" id="sps__darknavbar"
+           data-toggleclass='[".utility-bar","navbar-dark"]'
+           name="ST_dark_navbar" <!-- IF ST_dark_navbar -->checked<!-- ENDIF -->
+          />
+    </div>
+    <label for="sps__darknavbar" class="slickpanel-section__setting__label">
+      <strong>Dark navbar</strong>
+      <p>Use the dark version of navbar</p>
+    </label>
+  </div>
+
+  </div>
+  </div>
+
+
+  <div role="tabpanel" class="tab-pane active" id="header__header">
+	<div class="slickpanel-section">
+
+		<!-- #SETTING: Header height -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Header height (in px)</strong>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="number"
+						name="ST_header__height" min="50"
+						data-manipulate='["{$SELECTOR__mainheader}","css","height"]'
+						data-default='80' value="{ST_header__height}"
+						/>
+			</div>
+		</div>
+
+		<!-- #SETTING: Header background-color -->
+		<div class="slickpanel-section__setting  slickpanel-togglesetting">
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="checkbox"
+						name="ST_header__transparent"
+						data-transparency="true"
+						id="sps__header__transparent"
+						data-toggleclass='["{$SELECTOR__mainheader}", "transparent"]'
+						value="{ST_header__transparent}" <!-- IF ST_header__transparent -->checked<!-- ENDIF -->
+						/>
+			</div>
+			<label for="sps__header__transparent" class="slickpanel-section__setting__label"><strong>Transparent Header</strong>
+				<p>Set header background to <code>transparent</code> and removes left-right padding in boxed layout<br /> <em>This setting <strong>overrides</strong> header background settings below</em></p>
+			</label>
+		</div>
+
+		<!-- #SETTING: Header background-color -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Header background color</strong>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_header__bgcolor"
+						data-transparency="true"
+						data-colorchange='["{$SELECTOR__mainheader}","background-color"]'
+						value="{ST_header__bgcolor}"
+						/>
+			</div>
+		</div>
+
+		<!-- #SETTING: Header background-color -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Header background image</strong>
+				<p>Upload your images to <code>styles/canvas/theme/images/backgrounds</code> and enter the filename here (with extension)</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input class="form-control" type="text"
+							name="ST_header__bgimg_url"
+							data-manipulate='["{$SELECTOR__mainheader}","bgimg", "background-image"]'
+							data-default='poly.png' value="{ST_header__bgimg_url}"
+					   />
+			</div>
+		</div>
+
+		<!-- #SETTING: Header background-position -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Header background position</strong>
+				<p>x and y axis positions e.g. <code>center top</code></p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_header__bgimg_pos"
+						data-manipulate='["{$SELECTOR__mainheader}","css","background-position"]'
+						data-default='center 10%' value="{ST_header__bgimg_pos}"
+						/>
+			</div>
+		</div>
+
+		<!-- #SETTING: Header background-size -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Header background size</strong>
+				<p>Backgound image sizing. Generally you can leave this empty. Use <code>contain</code> for patterns</p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_header__bgimg_size"
+						data-manipulate='["{$SELECTOR__mainheader}", "css","background-size"]'
+						data-default='cover' value="{ST_header__bgimg_size}"
+						/>
+			</div>
+		</div>
+
+	</div>
+  </div>
+
+
+
+
+  <div role="tabpanel" class="tab-pane" id="header__logo">
+	
+	<div class="logotype-container">
+	
+	<div class="slickpanel-section" id="logotype-switch">
+
+	  <!-- #SETTING: Navbar position -->
+	  <div class="slickpanel-section__setting">
+		  <div class="slickpanel-section__setting__label">
+			  <strong>Logo type</strong>
+			  <p>Choose between text and image type logo</p>
+		  </div>
+		  <div class="slickpanel-section__setting__input">
+			  <select class="form-control"
+				  name="ST_logo__type"
+				  data-sectionswitch
+				  value="{ST_logo__type}">
+				  <option value="text" <!-- IF ST_logo__type != 'image'-->selected<!-- ENDIF -->>Text</option>
+				  <option value="image" <!-- IF ST_logo__type == 'image'-->selected<!-- ENDIF -->>Image</option>
+			  </select>
+		  </div>
+	  </div>
+	
+	</div>
+	  
+	<div class="slickpanel-section" id="logotype__image">
+
+	  <!-- #SETTING: Logo image -->
+	  <div class="slickpanel-section__setting">
+		  <div class="slickpanel-section__setting__label">
+			  <strong>Image filename (with extension)</strong>
+			  <p>Upload your logo to <code>styles/canvas/theme/images</code> and enter the file name here (with extension)</p>
+		  </div>
+		  <div class="slickpanel-section__setting__input">
+			  <input  class="form-control" type="text"
+					  name="ST_logo__image_filename"
+					  data-manipulate='["{$SELECTOR__imagelogo}","attr","src"]'
+					  value=<!-- IF ST_logo__image_filename -->"{ST_logo__image_filename}"<!-- ELSE -->"logo.png"<!-- ENDIF -->
+					  />
+		  </div>
+	  </div>
+
+	  <!-- #SETTING: Logo Image size -->
+	  <div class="slickpanel-section__setting">
+		  <div class="slickpanel-section__setting__label">
+			  <strong>Width (max-width)</strong>
+			  <p>Maximum width for your logo image. It is recommended to use a high-res logo image and scale it down using this setting.</p>
+		  </div>
+		  <div class="slickpanel-section__setting__input">
+			  <input  class="form-control" type="number"
+					  name="ST_logo__image_width"
+					  data-manipulate='["{$SELECTOR__imagelogo}","css","max-width","px"]'
+					  value=<!-- IF ST_logo__image_width -->"{ST_logo__image_width}"<!-- ELSE -->"150"<!-- ENDIF -->
+					  />
+		  </div>
+	  </div>
+	  
+	</div>
+	
+	<div class="slickpanel-section" id="logotype__text">
+
+		<!-- #SETTING: Logo text -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Logo text</strong>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_logo__text"
+						data-manipulate='["{$SELECTOR__textlogo}","text"]'
+						data-default='{SITENAME}' value="{ST_logo__text}"
+						/>
+			</div>
+		</div>
+
+		<!-- #SETTING: Logo font-family -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Text logo font-family</strong>
+				<p>Prioritzed list of fonts. Remember to define a generic name as fallback. (Example: <code>'Quicksand', sans-serif</code>). <em>Avoid double quotes (")</em></p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_logo__fontfamily"
+						data-manipulate='["{$SELECTOR__textlogo}","css","font-family"]'
+						data-default='Body font' value="{ST_logo__fontfamily}"
+						/>
+			</div>
+		</div>
+
+		<!-- #SETTING: Logo color -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Text logo color</strong>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_logo__color"
+						data-transparency="true"
+						data-colorchange='["{$SELECTOR__textlogo}","color"]'
+						data-default="white" value="{ST_logo__color}"
+						/>
+			</div>
+		</div>
+
+		<!-- #SETTING: Logo font size -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Text logo font-size (in px)</strong>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="number"
+						name="ST_logo__fontsize"
+						data-manipulate='["{$SELECTOR__textlogo}","css","font-size","px"]'
+						data-default="21" value="<!-- IF ST_logo__fontsize -->{ST_logo__fontsize}<!-- ENDIF -->"
+						/>
+			</div>
+		</div>
+
+		<!-- #SETTING: Logo font weight -->
+		<div class="slickpanel-section__setting">
+			<div class="slickpanel-section__setting__label">
+				<strong>Text logo font-weight</strong>
+				<p>e.g. <code>bold</code> <code>700</code></p>
+			</div>
+			<div class="slickpanel-section__setting__input">
+				<input  class="form-control" type="text"
+						name="ST_logo__fontweight"
+						data-manipulate='["{$SELECTOR__textlogo}","css","font-weight"]'
+						data-default='200' value="{ST_logo__fontweight}"
+						/>
+			</div>
+		</div>
+
+	</div>
+	</div>
+  </div>
+
+</div>

@@ -1,0 +1,98 @@
+<!-- INCLUDE mcp_header.html -->
+
+<form id="mcp" method="post" action="{S_MCP_ACTION}">
+
+<!-- IF not S_PM -->
+<fieldset class="forum-selection">
+	<select name="f" id="fo">{S_FORUM_OPTIONS}</select>
+	<button type="submit" name="sort" value="{L_GO}" title="{L_GO}" class="btn btn-default"><i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
+	{S_FORM_TOKEN}
+</fieldset>
+<!-- ENDIF -->
+
+<h2>{L_TITLE}</h2>
+<p>{L_EXPLAIN}</p>
+
+	<!-- IF .postrow -->
+		<div class="action-bar top">
+			<div class="right-side">
+				<!-- INCLUDE pagination.html -->
+			</div>
+		</div>
+		
+		<div class="st-section__header">{TOTAL_REPORTS}</div>
+
+		<ul class="itemlist itemlist--mcp itemlist--has-colbar">
+			<li class="itemlist__item itemlist__item--colbar">
+				<div class="item-inner">
+					<div class="item-col-main">{L_VIEW_DETAILS}</div>
+					<div class="item-col-moderation">{L_REPORTER}<!-- IF not S_PM --> &amp; {L_FORUM}<!-- ENDIF --></div>
+					<div class="item-col-mark">{L_MARK}</div>
+				</div>
+			</li>
+
+			<!-- BEGIN postrow -->
+			<li class="itemlist__item">
+				<div class="item-inner">
+					<!-- IF S_PM -->
+					<div class="item-col-main">
+						<a href="{postrow.U_VIEW_DETAILS}" class="topictitle">{postrow.PM_SUBJECT}</a> <!-- IF postrow.ATTACH_ICON_IMG --><i class="fi fi-attachment has-tooltip" title="{L_TOTAL_ATTACHMENTS}"></i><!-- ENDIF --><br />
+						<div class="item-info">
+							{L_MESSAGE_BY_AUTHOR} {postrow.PM_AUTHOR_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{postrow.PM_TIME}</span><br />
+							{L_MESSAGE_TO} {postrow.RECIPIENTS}
+						</div>
+						<div class="item-col-moderation--inline">
+							{L_REPORTER}{L_COLON} {postrow.REPORTER_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{postrow.REPORT_TIME}</span>
+						</div>
+					</div>
+					<div class="item-col-moderation">
+						{postrow.REPORTER_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{postrow.REPORT_TIME}</span>
+					</div>
+					<!-- ELSE -->
+					<div class="item-col-main">
+						<a href="{postrow.U_VIEW_DETAILS}" class="item-title">{postrow.POST_SUBJECT}</a> <!-- IF postrow.ATTACH_ICON_IMG --><i class="fi fi-attachment has-tooltip" title="{L_TOTAL_ATTACHMENTS}"></i><!-- ENDIF --><br />
+						<div class="item-info">{L_POSTED} {L_POST_BY_AUTHOR} {postrow.POST_AUTHOR_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{postrow.POST_TIME}</span></div>
+							<div class="item-col-moderation--inline">
+								{L_REPORTER}{L_COLON} {postrow.REPORTER_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{postrow.REPORT_TIME}</span><br />
+								<!-- IF postrow.U_VIEWFORUM -->{L_FORUM}{L_COLON} <a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF -->
+							</div>
+					</div>
+					<div class="item-col-moderation">
+						{postrow.REPORTER_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{postrow.REPORT_TIME}</span><br />
+						<!-- IF postrow.U_VIEWFORUM -->{L_FORUM}{L_COLON} <a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a><!-- ELSE -->{postrow.FORUM_NAME}<!-- ENDIF -->
+					</div>
+					<!-- ENDIF -->
+					<div class="item-col-mark"><input type="checkbox" name="report_id_list[]" value="{postrow.REPORT_ID}" /></div>
+				</div>
+			</li>
+			<!-- END postrow -->
+		</ul>
+
+		<fieldset class="display-options">
+			<label>{L_DISPLAY_POSTS}{L_COLON} {S_SELECT_SORT_DAYS}</label>
+			<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label><label>{S_SELECT_SORT_DIR}</label>
+			<!-- IF TOPIC_ID --><label><input type="checkbox" class="radio" name="t" value="{TOPIC_ID}" checked="checked" />&nbsp; <strong>{L_ONLY_TOPIC}</strong></label><!-- ENDIF -->
+			<input type="submit" name="sort" value="{L_GO}" class="button2" />
+		</fieldset>
+
+		<div class="action-bar bottom">
+			<div class="right-side">
+				<!-- INCLUDE pagination.html -->
+			</div>
+		</div>
+
+	<!-- ELSE -->
+		<p class="st-panel"><strong>{L_NO_REPORTS}</strong></p>
+	<!-- ENDIF -->
+
+<!-- IF .postrow -->
+	<fieldset class="display-actions">
+		<a href="#" data-marklist='["mcp","report_id_list"]' class="marklist-markall btn btn-default"><i class="fi fi-checkbox-multiple-marked"></i> <span class="btn-label">{L_MARK_ALL}</span></a>
+		<a href="#" data-marklist='["mcp","report_id_list"]' class="marklist-unmarkall btn btn-default"><i class="fi fi-checkbox-multiple-blank-outline"></i> <span class="btn-label">{L_UNMARK_ALL}</a>
+		<button class="btn btn-danger" type="submit" value="{L_DELETE_REPORTS}" name="action[delete]"><i class="fi fi-delete"></i> {L_DELETE_REPORTS}</button>
+		<!-- IF not S_CLOSED --><button class="btn btn-default" type="submit" name="action[close]" value="{L_CLOSE_REPORTS}"><i class="fi fi-close"></i> {L_CLOSE_REPORTS}</button><!-- ENDIF -->
+	</fieldset>
+<!-- ENDIF -->
+</form>
+
+<!-- INCLUDE mcp_footer.html -->

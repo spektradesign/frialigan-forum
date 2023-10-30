@@ -1,0 +1,193 @@
+<!-- INCLUDE mcp_header.html -->
+<!-- EVENT mcp_front_latest_unapproved_before -->
+
+<!-- IF S_SHOW_UNAPPROVED -->
+
+<form id="mcp_queue" method="post" action="{S_MCP_QUEUE_ACTION}">
+
+	<div class="st-section">
+
+		<h3 class="st-section__header">{L_LATEST_UNAPPROVED}</h3>
+		<div class="st-section__subheader">{L_UNAPPROVED_TOTAL}</div>
+
+		<!-- IF .unapproved -->
+		<ul class="itemlist itemlist--mcp itemlist--has-colbar">
+			
+			<li class="itemlist__item itemlist__item--colbar">
+				<div class="item-inner">
+					<div class="item-col-main">{L_VIEW_DETAILS}</div>
+					<div class="item-col-moderation">{L_TOPIC} &amp; {L_FORUM}</div>
+					<div class="item-col-mark"></div>
+				</div>
+			</li>
+			
+			<!-- BEGIN unapproved -->
+			<li class="itemlist__item">
+				<div class="item-inner">
+					
+					<div class="item-col-main">
+						<a href="{unapproved.U_POST_DETAILS}" class="item-title">{unapproved.SUBJECT} <!-- IF unapproved.ATTACH_ICON_IMG --><i class="fi fi-attachment has-tooltip" title="{L_TOTAL_ATTACHMENTS}"></i><!-- ENDIF --></a>
+						<div class="item-info">
+							{L_POSTED} {L_POST_BY_AUTHOR} {unapproved.AUTHOR_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{unapproved.POST_TIME}</span>
+						</div>
+						<!-- IF not S_IS_BOT -->
+							<span class="item-col-moderation--inline">
+								{L_TOPIC}{L_COLON} <a href="{unapproved.U_TOPIC}">{unapproved.TOPIC_TITLE}</a> <a href="{unapproved.U_MCP_TOPIC}" class="item-moderation-link">{L_MODERATE}</a><br />
+								{L_FORUM}{L_COLON} <!-- IF unapproved.U_FORUM --><a href="{unapproved.U_FORUM}">{unapproved.FORUM_NAME}</a><!-- ELSE -->{unapproved.FORUM_NAME}<!-- ENDIF --><!-- IF unapproved.U_MCP_FORUM --> <a class="item-moderation-link" href="{unapproved.U_MCP_FORUM}">{L_MODERATE}</a><!-- ENDIF --></span>
+							</span>
+						<!-- ENDIF -->
+					</div>
+					
+					<div class="item-col-moderation">
+						{L_TOPIC}{L_COLON} <a href="{unapproved.U_TOPIC}">{unapproved.TOPIC_TITLE}</a> <a href="{unapproved.U_MCP_TOPIC}" class="item-moderation-link">{L_MODERATE}</a><br />
+						{L_FORUM}{L_COLON} <!-- IF unapproved.U_FORUM --><a href="{unapproved.U_FORUM}">{unapproved.FORUM_NAME}</a><!-- ELSE -->{unapproved.FORUM_NAME}<!-- ENDIF --><!-- IF unapproved.U_MCP_FORUM --> <a class="item-moderation-link" href="{unapproved.U_MCP_FORUM}">{L_MODERATE}</a><!-- ENDIF --></span>
+					</div>
+					
+					<div class="item-col-mark">
+						<input type="checkbox" name="post_id_list[]" value="{unapproved.POST_ID}" />
+					</div>
+					
+				</div>
+			</li>
+			<!-- END unapproved -->
+			
+		</ul>
+		<!-- ENDIF -->
+	{S_FORM_TOKEN}
+
+	<!-- IF .unapproved -->
+		<fieldset class="display-actions">
+			{S_HIDDEN_FIELDS}
+			
+			<a href="#" data-marklist='["mcp_queue","post_id_list"]' class="marklist-markall btn btn-default"><i class="fi fi-checkbox-multiple-marked"></i> <span class="btn-label">{L_MARK_ALL}</span></a>
+			<a href="#" data-marklist='["mcp_queue","post_id_list"]' class="marklist-unmarkall btn btn-default"><i class="fi fi-checkbox-multiple-blank-outline"></i> <span class="btn-label">{L_UNMARK_ALL}</a>
+		
+			<button class="btn btn-success" type="submit" name="action[approve]" value="{L_APPROVE}"><i class="fi fi-check"></i> {L_APPROVE}</button>
+			<button class="btn btn-default" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}"><i class="fi fi-close"></i> {L_DISAPPROVE}</button>
+			
+		</fieldset>
+	<!-- ENDIF -->
+	</div>
+		</form>
+<!-- ENDIF -->
+
+<!-- EVENT mcp_front_latest_reported_before -->
+
+<!-- IF S_SHOW_REPORTS -->
+	<div class="st-section">
+
+		<h3 class="st-section__header">{L_LATEST_REPORTED}</h3>
+		<div class="st-section__subheader">{L_REPORTS_TOTAL}</div>
+		<!-- IF .report -->
+			<ul class="itemlist itemlist--mcp itemlist--has-colbar">
+				<li class="itemlist__item itemlist__item--colbar">
+				<div class="item-inner">
+					<div class="item-col-main">{L_VIEW_DETAILS}</div>
+					<div class="item-col-moderation">{L_REPORTER} &amp; {L_FORUM}</div>
+				</div>
+				</li>
+			<!-- BEGIN report -->
+				<li class="itemlist__item">
+					<div class="item-inner">
+						<div class="item-col-main">
+							<a href="{report.U_POST_DETAILS}#reports" class="item-title">{report.SUBJECT}</a> <!-- IF report.ATTACH_ICON_IMG --><i class="fi fi-attachment has-tooltip" title="{L_TOTAL_ATTACHMENTS}"></i><!-- ENDIF --><br />
+							<div class="item-info">
+								{L_POSTED} {L_POST_BY_AUTHOR} {report.AUTHOR_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{report.POST_TIME}</span>
+							</div>
+						</div>
+						<div class="item-col-moderation">
+							{L_REPORTED} {L_POST_BY_AUTHOR} {report.REPORTER_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{report.REPORT_TIME}</span>
+							<div>{L_FORUM}{L_COLON} <a href="{report.U_FORUM}">{report.FORUM_NAME}</a></div>
+						</div>
+					</div>
+				</li>
+			<!-- END report -->
+			</ul>
+		<!-- ENDIF -->
+
+	</div>
+<!-- ENDIF -->
+
+<!-- EVENT mcp_front_latest_reported_pms_before -->
+
+<!-- IF S_SHOW_PM_REPORTS -->
+	<div class="st-section">
+
+		<h3 class="st-section__header">{L_LATEST_REPORTED_PMS}</h3>
+		<p class="st-section__subheader">{L_PM_REPORTS_TOTAL}</p>
+
+		<!-- IF .pm_report -->
+			<ul class=" topiclist two-long-columns">
+				<li class="header">
+					<dl>
+						<dt><div class="list-inner">{L_VIEW_DETAILS}</div></dt>
+						<dd class="moderation"><span>{L_REPORTER}</span></dd>
+					</dl>
+				</li>
+			</ul>
+			
+			<ul class="st-itemlist topiclist mplist">
+
+			<!-- BEGIN pm_report -->
+			<li class="row<!-- IF pm_report.S_ROW_COUNT is odd --> bg1<!-- ELSE --> bg2<!-- ENDIF -->">
+				<dl>
+					<dt>
+						<div class="list-inner">
+							<a href="{pm_report.U_PM_DETAILS}" class="topictitle">{pm_report.PM_SUBJECT}</a> <!-- IF pm_report.ATTACH_ICON_IMG --><i class="fi fi-attachment has-tooltip" title="{L_TOTAL_ATTACHMENTS}"></i><!-- ENDIF --><br />
+							<span>{L_MESSAGE_BY_AUTHOR} {pm_report.PM_AUTHOR_FULL} &raquo; {pm_report.PM_TIME}</span><br />
+							<span>{L_MESSAGE_TO} {pm_report.RECIPIENTS}</span>
+						</div>
+					</dt>
+					<dd class="moderation">
+						<span>{L_REPORTED} {L_POST_BY_AUTHOR} {pm_report.REPORTER_FULL} {L_REPORTED_ON_DATE} {pm_report.REPORT_TIME}</span>
+					</dd>
+				</dl>
+			</li>
+			<!-- END pm_report -->
+			</ul>
+		<!-- ENDIF -->
+	</div>
+<!-- ENDIF -->
+
+<!-- EVENT mcp_front_latest_logs_before -->
+
+<!-- IF S_SHOW_LOGS -->
+	<div class="st-section">
+
+		<h3 class="st-section__header">{L_LATEST_LOGS}</h3>
+
+		<table class="table1">
+		<thead>
+		<tr>
+			<th class="name">{L_ACTION}</th>
+			<th class="name">{L_USERNAME}</th>
+			<th class="name">{L_IP}</th>
+			<th class="name">{L_VIEW_TOPIC}</th>
+			<th class="name">{L_VIEW_TOPIC_LOGS}</th>
+			<th class="name">{L_TIME}</th>
+		</tr>
+		</thead>
+		<tbody>
+	<!-- BEGIN log -->
+		<tr>
+			<td>{log.ACTION}</td>
+			<td><span>{log.USERNAME}</span></td>
+			<td><span>{log.IP}</span></td>
+			<td><span><!-- IF log.U_VIEW_TOPIC --><a href="{log.U_VIEW_TOPIC}" title="{L_VIEW_TOPIC}">{L_VIEW_TOPIC}</a><!-- ENDIF -->&nbsp;</span></td>
+			<td><span><!-- IF log.U_VIEWLOGS --><a href="{log.U_VIEWLOGS}">{L_VIEW_TOPIC_LOGS}</a><!-- ENDIF -->&nbsp;</span></td>
+			<td><span class="timestamp">{log.TIME}</span></td>
+		</tr>
+	<!-- BEGINELSE -->
+		<tr>
+			<td colspan="6">{L_NO_ENTRIES}</td>
+		</tr>
+	<!-- END log -->
+		</tbody>
+		</table>
+
+	</div>
+<!-- ENDIF -->
+
+<!-- EVENT mcp_front_latest_logs_after -->
+
+<!-- INCLUDE mcp_footer.html -->

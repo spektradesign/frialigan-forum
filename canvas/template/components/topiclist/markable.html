@@ -1,0 +1,93 @@
+<ul class="itemlist itemlist--cp itemlist--topics">
+	<li class="itemlist__item itemlist__item--colbar">
+		<div class="item-inner">
+			<div class="item-col-icon"></div>
+			<div class="item-col-main">{L_TOPIC}</div>
+			<div class="item-col-lastpost">{L_LAST_POST}</div>
+			<div class="item-col-mark"></div>
+		</div>
+	</li>
+<!-- BEGIN topicrow -->
+	<li class="itemlist__item {topicrow.TOPIC_IMG_STYLE}<!-- IF topicrow.S_TOPIC_REPORTED --> reported<!-- ENDIF -->">
+	<div class="item-inner">
+		
+		<div class="item-col-icon">
+			<i class="fi item-icon"></i>
+			<!-- IF topicrow.S_UNREAD_TOPIC --><a href="{topicrow.U_NEWEST_POST}" class="icon-link"></a><!-- ENDIF -->
+		</div>
+		
+		
+		<div class="item-col-main">
+			<!-- EVENT topiclist_row_prepend -->
+			
+			<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --><img class="item-icon-img" src="{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}" alt="{topicrow.TOPIC_FOLDER_IMG_ALT}"><!-- ENDIF -->
+			<!-- IF topicrow.S_TOPIC_MOVED --><span class="label label-default" title="{L_TOPIC_MOVED}"><i class="fi fi-arrow-{S_CONTENT_FLOW_BEGIN}"></i> <span class="st__cleanstring">{L_VIEW_TOPIC_MOVED}</span></span><!-- ENDIF -->
+			<!-- IF topicrow.S_TOPIC_LOCKED --><span class="item-ti has-tooltip" title="{L_TOPIC_LOCKED_SHORT}"><i class="fi fi-lock"></i></span><!-- ENDIF -->
+		
+			<a href="{topicrow.U_VIEW_TOPIC}" class="item-title">{topicrow.TOPIC_TITLE}</a>
+
+			<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED -->
+				<a href="{topicrow.U_MCP_QUEUE}" class="item-ti item-ti--unapproved has-tooltip" title="{L_POSTS_UNAPPROVED_FORUM}"><i class="fi fi-flag"></i></a>
+			<!-- ENDIF -->
+			<!-- IF topicrow.S_TOPIC_DELETED -->
+				<a href="{topicrow.U_MCP_QUEUE}" class="item-ti item-ti--deleted has-tooltip" title="{L_TOPIC_DELETED}"><i class="fi fi-recycle"></i></a>
+			<!-- ENDIF -->
+			<!-- IF topicrow.S_TOPIC_REPORTED -->
+				<a href="{topicrow.U_MCP_REPORT}" class="item-ti item-ti--reported has-tooltip" title="{L_TOPIC_REPORTED}"><i class="fi fi-alert"></i></a>
+			<!-- ENDIF -->
+			
+			<div class="item-info">
+					{L_POST_BY_AUTHOR} {topicrow.TOPIC_AUTHOR_FULL}{L_COMMA_SEPARATOR} <span class="topic-info__time"><span class="timestamp">{topicrow.FIRST_POST_TIME}</span></span>
+					<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --> &raquo; {L_IN} <a class="globaltopic-parentforum" href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a><!-- ENDIF -->
+					
+					<!-- IF topicrow.S_HAS_POLL --><span class="item-info__icon has-tooltip" title="{L_TOPIC_POLL}"><i class="fi fi-poll"></i></span><!-- ENDIF -->
+					<!-- IF topicrow.ATTACH_ICON_IMG --><span class="item-info__icon has-tooltip" title="{L_ATTACHMENTS}"><i class="fi fi-paperclip"></i></span><!-- ENDIF -->
+			</div>
+	
+			<!-- IF not S_IS_BOT -->
+			<span class="item-lastpost--inline">
+				{L_LAST_POST}
+				{L_POST_BY_AUTHOR}
+				{topicrow.LAST_POST_AUTHOR_FULL}
+				<a href="{topicrow.U_LAST_POST}" class="item-lastpost__time"><span class="timestamp">{topicrow.LAST_POST_TIME}</span></a>
+			</span>
+			<!-- ENDIF -->
+			<!-- EVENT topiclist_row_append -->
+		</div>
+		
+		<!-- PAGINATION BLOCK -->
+		<div class="item-col-pagination">
+			<!-- IF .topicrow.pagination -->
+				<ul class="pagination pagination-xs">
+					<!-- BEGIN pagination -->
+						<!-- IF topicrow.pagination.S_IS_PREV -->
+						<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><li class="active"><span>{topicrow.pagination.PAGE_NUMBER}</span></li>
+						<!-- ELSEIF topicrow.pagination.S_IS_ELLIPSIS --><li class="ellipsis"><span>{L_ELLIPSIS}</span></li>
+						<!-- ELSEIF topicrow.pagination.S_IS_NEXT -->
+						<!-- ELSE --><li><a href="{topicrow.pagination.PAGE_URL}">{topicrow.pagination.PAGE_NUMBER}</a></li>
+						<!-- ENDIF -->
+					<!-- END pagination -->
+				</ul>
+			<!-- ENDIF -->
+		</div>
+		
+		<div class="item-col-lastpost">
+			
+			<!-- IF topicrow.LAST_POST_TIME -->
+				<dfn>{L_POST_BY_AUTHOR} </dfn>{topicrow.LAST_POST_AUTHOR_FULL}
+				<br />
+				<a href="{topicrow.U_LAST_POST}" class="item-lastpost__time"><span class="timestamp">{topicrow.LAST_POST_TIME}</span></a>
+			<!-- ELSE -->
+				{L_NO_POSTS}
+			<!-- ENDIF -->
+	
+		</div>
+		
+		<div class="item-col-mark">
+			<input type="checkbox" name="t[{topicrow.TOPIC_ID}]" id="t{topicrow.TOPIC_ID}" />
+		</div>
+		
+	</div>
+	</li>
+<!-- END topicrow -->
+</ul>

@@ -1,0 +1,153 @@
+<a id="recent_topics"></a>
+
+<!-- BEGIN recent_topics -->
+	<!-- IF not recent_topics.S_TOPIC_TYPE_SWITCH and not recent_topics.S_FIRST_ROW -->
+		</ul>
+		</div>
+	</div>
+	<!-- ENDIF -->
+
+	<!-- IF recent_topics.S_FIRST_ROW or not recent_topics.S_TOPIC_TYPE_SWITCH -->
+	<div class="recent-topics forumbg<!-- IF recent_topics.S_TOPIC_TYPE_SWITCH and (recent_topics.S_POST_ANNOUNCE or recent_topics.S_POST_GLOBAL) --> announcements<!-- ENDIF -->">
+	<div class="inner">
+	<div class="section-header">
+		<span>{L_RECENT_TOPICS}</span>
+
+        <!-- IF .pagination -->
+        <div class="pagination pagination--inhead">
+    		<!-- INCLUDE pagination.html -->
+    	</div>
+        <!-- ENDIF -->
+
+	</div>
+	<ul class="itemlist itemlist--topics itemlist--topics--full">
+
+	<!-- ENDIF -->
+
+		<li data-topic-id="{recent_topics.TOPIC_ID}" class="itemlist__item {recent_topics.TOPIC_IMG_STYLE}<!-- IF recent_topics.S_TOPIC_REPORTED --> reported<!-- ENDIF -->">
+			<div class="item-inner">
+
+            <div class="item-col-icon"<!-- IF recent_topics.S_TOPIC_MOVED --> title="{L_TOPIC_MOVED}"<!-- ENDIF -->>
+				<i class="fi item-icon"></i>
+				<!-- IF recent_topics.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{recent_topics.U_NEWEST_POST}" title="{L_VIEW_NEWEST_POST}" class="icon-link"></a><!-- ENDIF -->
+			</div>
+
+            <div class="item-col-main">
+                <!-- EVENT topiclist_row_prepend -->
+
+                <!-- IF recent_topics.TOPIC_ICON_IMG and S_TOPIC_ICONS --><img class="topic-icon-img" src="{T_ICONS_PATH}{recent_topics.TOPIC_ICON_IMG}" alt="{recent_topics.TOPIC_FOLDER_IMG_ALT}"><!-- ENDIF -->
+                <!-- IF recent_topics.S_TOPIC_LOCKED --><span class="item-ti item-ti--locked has-tooltip" title="{L_TOPIC_LOCKED_SHORT}"><i class="fi fi-lock"></i></span><!-- ENDIF -->
+
+                <a href="{recent_topics.U_VIEW_TOPIC}" class="item-title">{recent_topics.TOPIC_TITLE}</a>
+
+                <!-- IF recent_topics.S_TOPIC_UNAPPROVED or recent_topics.S_POSTS_UNAPPROVED -->
+                    <a href="{recent_topics.U_MCP_QUEUE}" class="item-ti item-ti--unapproved has-tooltip" title="{L_POSTS_UNAPPROVED_FORUM}"><i class="fi fi-flag"></i></a>
+                <!-- ENDIF -->
+                <!-- IF recent_topics.S_TOPIC_DELETED -->
+                    <a href="{recent_topics.U_MCP_QUEUE}" class="item-ti item-ti--deleted has-tooltip" title="{L_TOPIC_DELETED}"><i class="fi fi-recycle"></i></a>
+                <!-- ENDIF -->
+                <!-- IF recent_topics.S_TOPIC_REPORTED -->
+                    <a href="{recent_topics.U_MCP_REPORT}" class="item-ti item-ti--reported has-tooltip" title="{L_TOPIC_REPORTED}"><i class="fi fi-alert"></i></a>
+                <!-- ENDIF -->
+
+
+                <div class="item-info">
+                    {L_POSTED} {L_POST_BY_AUTHOR} {recent_topics.TOPIC_AUTHOR_FULL}{L_COMMA_SEPARATOR} <span class="topic-info-time"><span class="timestamp">{recent_topics.FIRST_POST_TIME}</span></span>
+                    <!-- IF recent_topics.S_POST_GLOBAL and FORUM_ID != recent_topics.FORUM_ID --> &raquo; {L_IN} <a class="globaltopic-parentforum" href="{recent_topics.U_VIEW_FORUM}">{recent_topics.FORUM_NAME}</a><!-- ENDIF -->
+
+                    <!-- IF recent_topics.S_HAS_POLL --><span class="item-info__icon has-tooltip" title="{L_TOPIC_POLL}"><i class="fi fi-poll"></i></span><!-- ENDIF -->
+                    <!-- IF recent_topics.ATTACH_ICON_IMG --><span class="item-info__icon has-tooltip" title="{L_ATTACHMENTS}"><i class="fi fi-attachment"></i></span><!-- ENDIF -->
+
+                    <!-- EVENT topiclist_row_append -->
+                </div>
+
+                <!-- IF not S_IS_BOT -->
+                    <div class="item-lastpost--inline">
+                        <span class="reply-counter<!-- IF recent_topics.REPLIES == 0 --> reply-counter--zero<!-- ENDIF -->">
+                            <span class="formatted-numcounter">{recent_topics.REPLIES}</span>
+                            <i class="fi fi-message-text-outline"></i>
+                        </span>
+
+                        {L_LAST_POST}
+                        {L_POST_BY_AUTHOR}
+                        {recent_topics.LAST_POST_AUTHOR_FULL}{L_COMMA_SEPARATOR}
+                        <a href="{recent_topics.U_LAST_POST}" class="topic-lastpost-time"><span class="timestamp">{recent_topics.LAST_POST_TIME}</span></a>
+                    </div>
+                    <div class="item-stats--inline">
+                        <span class="item-stat item-stat--posts">
+                            <span class="topic-posts-count"><span class="formatted-numcounter">{recent_topics.REPLIES}</span></span>
+                            <span class="topic-posts-label">{L_REPLIES}</span>
+                        </span>
+                        <span class="item-stat item-stat--views">
+                            <span class="item-stat__count"><span class="formatted-numcounter">{recent_topics.VIEWS}</span></span>
+                            <span class="item-stat__label">{L_VIEWS}</span>
+                        </span>
+                    </div>
+                <!-- ENDIF -->
+
+            </div>
+
+            <!-- PAGINATION BLOCK -->
+            <div class="item-col-pagination">
+                <!-- IF .recent_topics.pagination -->
+                    <ul class="pagination pagination-xs">
+                        <!-- BEGIN pagination -->
+                            <!-- IF recent_topics.pagination.S_IS_PREV -->
+                            <!-- ELSEIF recent_topics.pagination.S_IS_CURRENT --><li class="active"><span>{recent_topics.pagination.PAGE_NUMBER}</span></li>
+                            <!-- ELSEIF recent_topics.pagination.S_IS_ELLIPSIS --><li class="ellipsis"><span>{L_ELLIPSIS}</span></li>
+                            <!-- ELSEIF recent_topics.pagination.S_IS_NEXT -->
+                            <!-- ELSE --><li><a href="{recent_topics.pagination.PAGE_URL}">{recent_topics.pagination.PAGE_NUMBER}</a></li>
+                            <!-- ENDIF -->
+                        <!-- END pagination -->
+                    </ul>
+                <!-- ENDIF -->
+            </div>
+
+            <!-- STAT BLOCK -->
+            <!-- IF ST_modern_item_stats === '0' -->
+            <div class="item-col-stats">
+                <span class="item-stat item-stat--posts">
+                    <span class="item-stat__count"><span class="formatted-numcounter">{recent_topics.REPLIES}</span></span>
+                    <span class="item-stat__label">{L_REPLIES}</span>
+                </span>
+                <span class="item-stat item-stat--views">
+                    <span class="item-stat__count"><span class="formatted-numcounter">{recent_topics.VIEWS}</span></span>
+                    <span class="item-stat__label">{L_VIEWS}</span>
+                </span>
+            </div>
+            <!-- ELSE -->
+            <div class="item-col-stats">
+                <span class="item-stat--v2 item-stat--views">
+                    <span class="item-stat__count"><span class="formatted-numcounter">{recent_topics.VIEWS}</span></span>
+                    <span class="item-stat__label">{L_VIEWS}</span>
+                </span>
+                <span class="item-stat--v2 item-stat--posts has-tooltip" data-placement="left" title="{recent_topics.REPLIES} {L_REPLIES}">
+                    <span class="item-stat__label"><i class="fi fi-comment-multiple-outline"></i></span>
+                    <span class="item-stat__count"><span class="formatted-numcounter">{recent_topics.REPLIES}</span></span>
+                </span>
+            </div>
+            <!-- ENDIF -->
+
+            <!-- LASTPOST BLOCK -->
+            <div class="item-col-lastpost<!-- IF recent_topics.AVATAR_IMG --> has-avatar<!-- ENDIF -->">
+                <span class="hidden">{L_LAST_POST}</span> {recent_topics.LAST_POST_AUTHOR_FULL}
+                <br />
+                <a href="{recent_topics.U_LAST_POST}" class="item-lastpost__time"><span class="timestamp">{recent_topics.LAST_POST_TIME}</span></a>
+            </div>
+
+        </div>
+		</li>
+
+	<!-- IF recent_topics.S_LAST_ROW -->
+			</ul>
+		</div>
+	</div>
+	<!-- ENDIF -->
+
+<!-- BEGINELSE -->
+	<div class="panel">
+		<div class="inner">
+		<strong>{L_NO_TOPICS}</strong>
+		</div>
+	</div>
+<!-- END recent_topics -->

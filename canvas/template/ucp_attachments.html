@@ -1,0 +1,91 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+	<h2>{L_TITLE}</h2>
+	<p class="description">{L_ATTACHMENTS_EXPLAIN}</p>
+
+	<!-- IF .attachrow -->
+	<div class="action-bar top">
+		<div class="right-side">
+			<!--{NUM_ATTACHMENTS}-->
+			<!-- INCLUDE pagination.html -->
+		</div>
+	</div>
+	
+	<div class="section-header">{NUM_ATTACHMENTS}</div>
+	
+	<ul class="st-itemlist genericlist cplist st-itemlist-sortbar">
+		<li class="st-itemlist__item">
+			<div class="item-inner">
+			<div class="item-col item-col-main"><a href="{U_SORT_FILENAME}">{L_FILENAME}</a></div>
+			<div class="item-col item-col-counter"><a href="{U_SORT_DOWNLOADS}">{L_DOWNLOADS}</a></div>
+			<div class="item-col item-col-time"><a href="{U_SORT_POST_TIME}">{L_POST_TIME}</a></div>
+			<div class="item-col item-mark">{L_MARK}</div>
+			</div>
+		</li>
+	</ul>
+	
+	<ul class="st-itemlist genericlist cplist">
+	<!-- BEGIN attachrow -->
+	<li class="st-itemlist__item">
+	<div class="item-inner">
+		
+		<div class="item-col item-col-main">
+			<a href="{attachrow.U_VIEW_ATTACHMENT}" class="item-title attachment-filename ellipsis-text" title="{attachrow.FILENAME}">{attachrow.FILENAME}</a> <span class="label file-size-label">{attachrow.SIZE}</span>
+			<div class="item-time-inline">
+				{L_POSTED} <span class="timestamp">{attachrow.POST_TIME}</span>
+				<div class="text-dim"><span class="formatted-numcounter">{attachrow.DOWNLOAD_COUNT}</span> {L_DOWNLOADS}</div>
+				
+			</div>
+			<div class="item-info">
+				<!-- IF attachrow.S_IN_MESSAGE -->{L_PM}{L_COLON} <!-- ELSE -->{L_TOPIC}{L_COLON} <!-- ENDIF --><a href="{attachrow.U_VIEW_TOPIC}">{attachrow.TOPIC_TITLE}</a>
+			</div>
+		</div>
+		
+		<div class="item-col item-col-counter">
+			<span class="formatted-numcounter">{attachrow.DOWNLOAD_COUNT}</span>
+		</div>
+		
+		<div class="item-col item-col-time">
+			<span class="timestamp">{attachrow.POST_TIME}</span>
+		</div>
+				
+		<div class="item-col item-mark">
+			<input type="checkbox" name="attachment[{attachrow.ATTACH_ID}]" value="1" />
+		</div>
+		
+	</div>
+	</li>
+	<!-- END attachrow -->
+	</ul>
+
+	<fieldset class="display-options">
+		<label for="sk">{L_SORT_BY}{L_COLON} <select name="sk" id="sk">{S_SORT_OPTIONS}</select></label> 
+		<label><select name="sd" id="sd">{S_ORDER_SELECT}</select></label>
+		<input class="button2" type="submit" name="sort" value="{L_SORT}" />
+		{S_FORM_TOKEN}
+	</fieldset>
+
+	<div class="action-bar bottom">
+		<div class="right-side">
+			<!--{TOTAL_ATTACHMENTS}-->
+			<!-- INCLUDE pagination.html -->
+		</div>
+	</div>
+
+	<!-- ELSE -->
+		<p class="panel">{L_UCP_NO_ATTACHMENTS}</p>
+	<!-- ENDIF -->
+	
+<!-- IF S_ATTACHMENT_ROWS -->
+	<fieldset class="display-actions">
+		<a href="#" data-marklist='["ucp","attachment"]' class="marklist-markall btn btn-default"><i class="fi fi-checkbox-multiple-marked"></i> <span class="btn-label">{L_MARK_ALL}</span></a>
+		<a href="#" data-marklist='["ucp","attachment"]' class="marklist-unmarkall btn btn-default"><i class="fi fi-checkbox-multiple-blank-outline"></i> <span class="btn-label">{L_UNMARK_ALL}</a>
+		<button type="submit" name="delete" value="{L_DELETE_MARKED}" class="btn btn-danger"><i class="fi fi-close"></i> {L_DELETE_MARKED}</button>
+		{S_FORM_TOKEN}
+	</fieldset>
+<!-- ENDIF -->
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

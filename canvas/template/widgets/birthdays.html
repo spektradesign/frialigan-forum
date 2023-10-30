@@ -1,0 +1,17 @@
+<!-- IF not $st_widgetshown_birthdays -->
+<!-- IF S_DISPLAY_BIRTHDAY_LIST and .birthdays -->
+  <div class="sidebar-widget birthday-list">
+	<div class="widget-header">
+	  {L_BIRTHDAYS}
+	  <span class="close" data-toggle="collapse" data-target="#widget-birthdayList"></span>
+	</div>
+	<div class="widget-content collapse in" id="widget-birthdayList">
+			<!-- EVENT index_body_block_birthday_prepend -->
+			<!-- IF .birthdays -->{L_CONGRATULATIONS}{L_COLON} <strong><!-- BEGIN birthdays -->{birthdays.USERNAME}<!-- IF birthdays.AGE !== '' --> ({birthdays.AGE})<!-- ENDIF --><!-- IF not birthdays.S_LAST_ROW -->, <!-- ENDIF --><!-- END birthdays --></strong>
+			<!-- ELSE --><span class="text-muted">{L_NO_BIRTHDAYS}</span><!-- ENDIF -->
+			<!-- EVENT index_body_block_birthday_append -->
+	</div>
+  </div>
+<!-- ENDIF -->
+<!-- DEFINE $st_widgetshown_birthdays = true -->
+<!-- ENDIF -->

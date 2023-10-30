@@ -1,0 +1,23 @@
+<!-- IF not $st_widgetshown_wol -->
+<!-- IF S_DISPLAY_ONLINE_LIST  -->
+  <div class="sidebar-widget online-list">
+	<div class="widget-header">
+	  <!-- IF U_VIEWONLINE --><a href="{U_VIEWONLINE}">{L_WHO_IS_ONLINE}</a>
+	  <!-- ELSE -->{L_WHO_IS_ONLINE}<!-- ENDIF -->
+	  <span class="online-list-total"><span class="formatted-numcounter">{TOTAL_USERS_ONLINE}</span></span>
+
+	</div>
+	<div class="widget-content collapse in" id="widget-onlineList">
+	  <!-- EVENT index_body_block_online_prepend -->
+	  {LOGGED_IN_USER_LIST}
+	  <em class="wol-explain">{L_ONLINE_EXPLAIN}</em>
+	  <!-- IF LEGEND --><div class="rank-legend">{LEGEND}</div><!-- ENDIF -->
+	  <!--<div class="block-section">
+		{RECORD_USERS}
+	  </div>-->
+	  <!-- EVENT index_body_block_online_append -->
+	</div>
+  </div>
+<!-- ENDIF -->
+<!-- DEFINE $st_widgetshown_wol = true -->
+<!-- ENDIF -->

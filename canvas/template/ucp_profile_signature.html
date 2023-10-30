@@ -1,0 +1,53 @@
+<!-- INCLUDE ucp_header.html -->
+<section class="ucp-section uc-section-profile_info">
+<form class="st-form" id="postform" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+	<div class="ucp-section__header">
+		<h2 class="ucp-section__title">{L_TITLE}</h2>
+	</div>
+	
+	<p class="ucp-section__description">{L_SIGNATURE_EXPLAIN}</p>
+	
+	<!-- IF SIGNATURE_PREVIEW != '' -->
+	<div class="st-section">
+		<h3 class="st-section__header">{L_SIGNATURE_PREVIEW}</h3>
+		<div class="st-panel">
+			<div class="signature standalone">{SIGNATURE_PREVIEW}</div>
+		</div>
+	</div>
+	<hr class="dashed">
+	<!-- ENDIF -->
+
+	<!-- DEFINE $SIG_EDIT = 1 -->
+	<div class="st-section">
+	<!-- INCLUDE posting_editor.html -->
+	</div>
+	
+	<div class="st-section">
+		<h3 class="st-section__header">{L_OPTIONS}</h3>
+		<fieldset class="st-form__fieldset">
+			<!-- IF S_BBCODE_ALLOWED -->
+				<div><label for="disable_bbcode"><input type="checkbox" name="disable_bbcode" id="disable_bbcode"{S_BBCODE_CHECKED} /> {L_DISABLE_BBCODE}</label></div>
+			<!-- ENDIF -->
+			<!-- IF S_SMILIES_ALLOWED -->
+				<div><label for="disable_smilies"><input type="checkbox" name="disable_smilies" id="disable_smilies"{S_SMILIES_CHECKED} /> {L_DISABLE_SMILIES}</label></div>
+			<!-- ENDIF -->
+			<!-- IF S_LINKS_ALLOWED -->
+				<div><label for="disable_magic_url"><input type="checkbox" name="disable_magic_url" id="disable_magic_url"{S_MAGIC_URL_CHECKED} /> {L_DISABLE_MAGIC_URL}</label></div>
+			<!-- ENDIF -->
+	
+		</fieldset>
+	</div>
+
+	<fieldset class="st-form__submit">
+		{S_HIDDEN_FIELDS}
+		<button type="reset" value="{L_RESET}" name="reset" class="btn btn-default"><i class="fi fi-reload"></i> {L_RESET}</button>
+		&nbsp;
+		<button type="submit" value="{L_PREVIEW}" name="preview" class="btn btn-default"><i class="fi fi-eye"></i> {L_PREVIEW}</button>
+		&nbsp;
+		<button type="submit" value="{L_SUBMIT}" name="submit" class="btn btn-default">{L_SUBMIT} <i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
+		{S_FORM_TOKEN}
+	</fieldset>
+</form>
+</section>
+<!-- INCLUDE ucp_footer.html -->

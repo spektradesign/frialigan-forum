@@ -1,0 +1,91 @@
+<!-- INCLUDE ucp_header.html -->
+
+<h2>{L_TITLE}</h2>
+<p class="description">{L_UCP_WELCOME}</p>
+
+<!-- IF .topicrow -->
+<div class="st-section">
+	<h3>{L_IMPORTANT_NEWS}</h3>
+
+	<ul class="itemlist itemlist--topics itemlist--ucp">
+	<!-- BEGIN topicrow -->
+		<li class="itemlist__item {topicrow.TOPIC_IMG_STYLE}">
+		<div class="item-inner">
+			
+			<div class="item-col-icon">
+				<i class="fi item-icon"></i>
+				<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{topicrow.U_NEWEST_POST}" class="icon-link"></a><!-- ENDIF -->
+			</div>
+			
+			<div class="item-col-main">
+				<!-- EVENT topiclist_row_prepend -->
+				
+				<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --><img class="item-icon-img" src="{T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}" alt="{topicrow.TOPIC_FOLDER_IMG_ALT}"><!-- ENDIF -->
+				<!-- IF topicrow.S_TOPIC_MOVED --><span class="label label-default" title="{L_TOPIC_MOVED}"><i class="fi fi-arrow-{S_CONTENT_FLOW_BEGIN}"></i> <span class="st__cleanstring">{L_VIEW_TOPIC_MOVED}</span></span><!-- ENDIF -->
+				<!-- IF topicrow.S_TOPIC_LOCKED --><span class="item-ti has-tooltip" title="{L_TOPIC_LOCKED_SHORT}"><i class="fi fi-lock"></i></span><!-- ENDIF -->
+				<a href="{topicrow.U_VIEW_TOPIC}" class="item-title">{topicrow.TOPIC_TITLE}</a>
+				
+				<div class="item-info">
+					{L_POST_BY_AUTHOR} {topicrow.TOPIC_AUTHOR_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{topicrow.FIRST_POST_TIME}</span>
+					<!-- IF topicrow.S_POST_GLOBAL and FORUM_ID != topicrow.FORUM_ID --> &raquo; {L_IN} <a class="globaltopic-parentforum" href="{topicrow.U_VIEW_FORUM}">{topicrow.FORUM_NAME}</a><!-- ENDIF -->
+					
+					<!-- IF topicrow.S_HAS_POLL --><span class="item-info__icon has-tooltip" title="{L_TOPIC_POLL}"><i class="fi fi-poll"></i></span><!-- ENDIF -->
+					<!-- IF topicrow.ATTACH_ICON_IMG --><span class="item-info__icon has-tooltip" title="{L_ATTACHMENTS}"><i class="fi fi-paperclip"></i></span><!-- ENDIF -->
+					<!-- EVENT topiclist_row_append -->
+				</div>
+				
+				<!-- IF not S_IS_BOT -->
+					<span class="item-lastpost--inline">
+						{L_LAST_POST}
+						{L_POST_BY_AUTHOR}
+						{topicrow.LAST_POST_AUTHOR_FULL}
+						<a href="{topicrow.U_LAST_POST}" class="item-lastpost__time"><span class="timestamp">{topicrow.LAST_POST_TIME}</span></a>
+					</span>
+				<!-- ENDIF -->
+				
+			</div>
+			
+			<!-- PAGINATION BLOCK -->
+			<div class="item-col-pagination">
+				<!-- IF .topicrow.pagination -->
+					<ul class="pagination pagination-xs">
+						<!-- BEGIN pagination -->
+							<!-- IF topicrow.pagination.S_IS_PREV -->
+							<!-- ELSEIF topicrow.pagination.S_IS_CURRENT --><li class="active"><span>{topicrow.pagination.PAGE_NUMBER}</span></li>
+							<!-- ELSEIF topicrow.pagination.S_IS_ELLIPSIS --><li class="ellipsis"><span>{L_ELLIPSIS}</span></li>
+							<!-- ELSEIF topicrow.pagination.S_IS_NEXT -->
+							<!-- ELSE --><li><a href="{topicrow.pagination.PAGE_URL}">{topicrow.pagination.PAGE_NUMBER}</a></li>
+							<!-- ENDIF -->
+						<!-- END pagination -->
+					</ul>
+				<!-- ENDIF -->
+			</div>
+			
+			<!-- LASTPOST BLOCK -->
+			<div class="item-col-lastpost">
+				<span class="hidden">{L_LAST_POST}</span>
+				{topicrow.LAST_POST_AUTHOR_FULL}
+				<br />
+				<a href="{topicrow.U_LAST_POST}" class="item-lastpost__time"><span class="timestamp">{topicrow.LAST_POST_TIME}</span></a>
+			</div>
+		
+		</div>
+		</li>
+	<!-- END topicrow -->
+	</ul>
+</div>
+<!-- ENDIF -->
+
+<div class="st-section">
+	<div class="section-header">{L_YOUR_DETAILS}</div>
+	<dl class="details">
+		<dt>{L_JOINED}{L_COLON}</dt> <dd>{JOINED}</dd>
+		<dt>{L_LAST_ACTIVE}{L_COLON}</dt> <dd>{LAST_VISIT_YOU}</dd>
+		<dt>{L_TOTAL_POSTS}{L_COLON}</dt> <dd><!-- IF POSTS_PCT -->{POSTS}<!-- IF S_DISPLAY_SEARCH --> | <strong><a href="{U_SEARCH_USER}">{L_SEARCH_YOUR_POSTS}</a></strong><!-- ENDIF --><br />({POSTS_DAY} / {POSTS_PCT})<!-- ELSE -->{POSTS}<!-- ENDIF --></dd>
+		<!-- IF ACTIVE_FORUM != '' --><dt>{L_ACTIVE_IN_FORUM}{L_COLON}</dt> <dd><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})</dd><!-- ENDIF -->
+		<!-- IF ACTIVE_TOPIC != '' --><dt>{L_ACTIVE_IN_TOPIC}{L_COLON}</dt> <dd><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})</dd><!-- ENDIF -->
+		<!-- IF WARNINGS --><dt>{L_YOUR_WARNINGS}{L_COLON}</dt> <dd class="error">{WARNING_IMG} [{WARNINGS}]</dd><!-- ENDIF -->
+	</dl>
+</div>
+
+<!-- INCLUDE ucp_footer.html -->

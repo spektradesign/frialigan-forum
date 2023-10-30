@@ -1,0 +1,51 @@
+<div class="page-footer__before">
+	<div class="container">
+    <div class="dropup footer-links-dropdown">
+        <a href="javascript:void(0)" data-toggle="dropdown">
+            <span class="icon-menu-bars"><span class="bar-1"></span><span class="bar-2"></span><span class="bar-3"></span></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <!-- IF not S_IS_BOT -->
+                <li><a href="{U_DELETE_COOKIES}" data-ajax="slickthemes.resetStorage" data-refresh="true" role="menuitem"><i class="fi fi-close"></i> {L_DELETE_COOKIES}</a></li>
+                <!-- IF S_DISPLAY_MEMBERLIST --><li><a href="{U_MEMBERLIST}" title="{L_MEMBERLIST_EXPLAIN}" role="menuitem">{L_MEMBERLIST}</a></li><!-- ENDIF -->
+            <!-- ENDIF -->
+            
+            <!-- EVENT overall_footer_teamlink_before -->
+            <!-- IF U_TEAM --><li><a href="{U_TEAM}" role="menuitem">{L_THE_TEAM}</a></li><!-- ENDIF -->
+            <!-- EVENT overall_footer_teamlink_after -->
+            <!-- IF U_CONTACT_US --><li><a href="{U_CONTACT_US}" role="menuitem">{L_CONTACT_US}</a></li><!-- ENDIF -->
+        </ul>
+    </div>
+    
+    <ul class="footer-links" role="menu">
+
+        <!-- IF not S_IS_BOT -->
+            <li><a href="{U_DELETE_COOKIES}" data-ajax="slickthemes.resetStorage" data-refresh="true" role="menuitem"><i class="fi fi-close"></i> {L_DELETE_COOKIES}</a></li>
+            <!-- IF S_DISPLAY_MEMBERLIST --><li><a href="{U_MEMBERLIST}" title="{L_MEMBERLIST_EXPLAIN}" role="menuitem">{L_MEMBERLIST}</a></li><!-- ENDIF -->
+        <!-- ENDIF -->
+        
+        <!-- EVENT overall_footer_teamlink_before -->
+		<!-- IF U_TEAM --><li><a href="{U_TEAM}" role="menuitem">{L_THE_TEAM}</a></li><!-- ENDIF -->
+		<!-- EVENT overall_footer_teamlink_after -->
+		<!-- IF U_CONTACT_US --><li><a href="{U_CONTACT_US}" role="menuitem">{L_CONTACT_US}</a></li><!-- ENDIF -->
+    </ul>
+    
+	<span class="socialicons">
+	  <!-- IF ST_social_fb -->
+		<a href="{ST_social_fb}"><i class="fi fi-facebook-box"></i></a><!-- ENDIF -->
+	  <!-- IF ST_social_twitter -->
+		<a href="{ST_social_twitter}"><i class="fi fi-twitter-box"></i></a><!-- ENDIF -->
+	  <!-- IF ST_social_gplus -->
+		<a href="{ST_social_gplus}"><i class="fi fi-google-plus-box"></i></a><!-- ENDIF -->
+	  <!-- IF ST_social_youtube -->
+		<a href="{ST_social_youtube}"><i class="fi fi-youtube-play"></i></a><!-- ENDIF -->
+	</span>
+	
+  </div>
+</div>
+
+<div class="page-footer__inner container">
+  
+  <!-- INCLUDE custom/complex_footer.html -->
+  
+</div>

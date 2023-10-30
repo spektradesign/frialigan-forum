@@ -1,0 +1,31 @@
+<!-- IF S_AJAX_REQUEST -->
+	<form action="{S_CONFIRM_ACTION}" method="post">
+		<h3>{MESSAGE_TITLE}</h3>
+		<p>{MESSAGE_TEXT}</p>
+
+		<fieldset class="submit-buttons">
+			<input type="button" name="confirm" value="{L_YES}" class="button2" />&nbsp;
+			<input type="button" name="cancel" value="{L_NO}" class="button2" />
+		</fieldset>
+	</form>
+
+<!-- ELSE -->
+
+<!-- INCLUDE simple_header.html -->
+<div class="simplepage__box">
+	
+	<h2 class="page-title">{MESSAGE_TITLE}</h2>
+	<p>{MESSAGE_TEXT}</p>
+		
+	<form id="confirm" action="{S_CONFIRM_ACTION}" method="post" class="st-form">
+		<fieldset class="submit-buttons">
+			{S_HIDDEN_FIELDS}
+			<button type="submit" name="confirm" value="{L_YES}" class="btn btn-success"><i class="fi fi-check"></i> {L_YES}</button>
+			<button type="submit" name="cancel" value="{L_NO}" class="btn btn-default"><i class="fi fi-close"></i> {L_NO}</button>
+		</fieldset>
+	</form>
+
+</div>
+
+<!-- INCLUDE simple_footer.html -->
+<!-- ENDIF -->

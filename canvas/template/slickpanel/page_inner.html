@@ -1,0 +1,98 @@
+<!-- INCLUDE slickpanel/inc.html -->
+<div class="page-header tp-header">
+	<!-- IF $SLICKPANEL_ONPAGE == 1 --><a href="{SLICKPANEL_LINK}"><img class="st-logo" src="{T_THEME_PATH}/images/slickthemes/slickpanel.png" alt="Slickthemes" /></a><!-- ENDIF -->
+</div>
+<form dir="ltr" action="{SLICKPANEL_USERCONFIG}" id="tp-form" method="post" data-ajax="slickthemes.themeconfig_save">
+	<div role="tabpanel" class="tp-tabcontainer">
+
+	<!-- Themepanel nav -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#general" title="General settings" role="tab" data-toggle="tab">
+			<i class="fi fi-settings-box"></i>
+			<span>General</span>
+		</a></li>
+		<li role="presentation"><a href="#layout" title="Layout" role="tab" data-toggle="tab">
+			<i class="fi fi-menu"></i>
+			<span>layout</span>
+		</a></li>
+		<li role="presentation"><a href="#typography" title="Typography" role="tab" data-toggle="tab">
+			<i class="fi fi-alphabetical"></i>
+			<span>Typography</span>
+		</a></li>
+		<li role="presentation"><a href="#header" title="Header settings" role="tab" data-toggle="tab">
+			<i class="fi fi-menu"></i>
+			<span>Header</span>
+		</a></li>
+		<li role="presentation"><a href="#skin" title="Skin" role="tab" data-toggle="tab">
+			<i class="fi fi-palette"></i>
+			<span>Skin</span>
+		</a></li>
+		<li role="presentation"><a href="#social" title="Social links" role="tab" data-toggle="tab">
+			<i class="fi fi-twitter"></i>
+			<span>Social</span>
+		</a></li>
+	</ul>
+
+	<div class="tab-content">
+
+		<!-- SECTION: Misc =================================================================== -->
+		<div role="tabpanel" class="tab-pane tp-section" id="layout"><div class="tab-pane-wrapper">
+			<!-- INCLUDE slickpanel/layout.html -->
+		</div></div>
+
+
+		<!-- SECTION: general ================================================================ -->
+		<div role="tabpanel" class="tab-pane in active tp-section" id="general">
+		<div class="tab-pane-wrapper">
+			<!-- INCLUDE slickpanel/general.html -->
+		</div>
+		</div>
+
+		<!-- SECTION: widgets ================================================================ -->
+		<div role="tabpanel" class="tab-pane tp-section" id="skin">
+		<div class="tab-pane-wrapper">
+			<!-- INCLUDE slickpanel/skin.html -->
+		</div>
+		</div>
+
+		<!-- SECTION: Typography ================================================================= -->
+		<div role="tabpanel" class="tab-pane tp-section" id="typography">
+		<div class="tab-pane-wrapper">
+			<!-- INCLUDE slickpanel/typography.html -->
+		</div>
+		</div>
+
+		<!-- SECTION: header ================================================================= -->
+		<div role="tabpanel" class="tab-pane tp-section" id="header">
+		<div class="tab-pane-wrapper">
+			<!-- INCLUDE slickpanel/header.html -->
+		</div>
+		</div>
+
+		<!-- SECTION: social ================================================================= -->
+		<div role="tabpanel" class="tab-pane tp-section" id="social">
+		<div class="tab-pane-wrapper">
+			<!-- INCLUDE slickpanel/social.html -->
+		</div>
+		</div>
+
+	</div>
+	</div>
+
+	<div class="submit-section"><!--
+		<button type="submit" id="submit_userconfig" name="submit_userconfig" value="save" class="btn btn-success">
+			<i class="fi fi-check"></i> Save
+		</button>-->
+		<input type="submit" id="submit_userconfig" name="submit_userconfig" value="save" class="btn btn-success">
+		<!--<a href="javascript:void(0)" class="tpform-reset btn btn-danger"><i class="fi fi-undo-variant"></i> Reset</a>-->
+		{S_FORM_TOKEN}
+	</div>
+
+</form>
+<script type="text/javascript">
+	var _st = window._st || {};
+	_st.onloadfunctions = _st.onloadfunctions || [];
+	_st.onloadfunctions.push(function(){
+		_st.skinpanel();
+	});
+</script>

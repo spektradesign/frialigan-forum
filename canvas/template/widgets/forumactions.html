@@ -1,0 +1,34 @@
+<!-- IF not S_IS_BOT and (S_DISPLAY_POST_INFO or S_DISPLAY_SEARCHBOX) -->
+	<div class="sidebar-widget-bare">
+	<!-- IF S_DISPLAY_POST_INFO -->
+		<!-- EVENT viewforum_buttons_top_before -->
+
+		<!-- IF S_IS_LOCKED -->
+		<a href="{U_POST_NEW_TOPIC}" class="btn btn-danger btn-createnew btn-block locked" title="{L_FORUM_LOCKED}">
+			<i class="fi fi-lock"></i> {L_BUTTON_FORUM_LOCKED}
+		</a>
+		<!-- ELSE -->
+		<a href="{U_POST_NEW_TOPIC}" class="btn btn-success btn-block btn-createnew" title="{L_POST_TOPIC}">
+			<i class="fi fi-plus"></i> {L_BUTTON_NEW_TOPIC}
+		</a>
+		<!-- ENDIF -->
+
+		<!-- EVENT viewforum_buttons_top_after -->
+	<!-- ENDIF -->
+
+	<!-- IF S_DISPLAY_SEARCHBOX -->
+		<div class="search-box" role="search">
+			<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
+			<div class="input-group">
+				<input class="search form-control" type="search" name="keywords" id="search_keywords" size="20" placeholder="{L_SEARCH_FORUM}" />
+				<span class="input-group-btn">
+				<button class="btn btn-default" type="submit" title="{L_SEARCH}"><i class="fi <!-- IF S_CONTENT_FLOW_END == 'right' -->fi-arrow-right<!-- ELSE -->fi-magnify<!-- ENDIF -->"></i></button>
+				<a href="{U_SEARCH}" class="btn btn-default" title="{L_SEARCH_ADV}"><i class="fi fi-settings"></i></a>
+				</span>
+			</div>
+			{S_SEARCH_LOCAL_HIDDEN_FIELDS}
+			</form>
+		</div>
+	<!-- ENDIF -->
+	</div>
+<!-- ENDIF -->

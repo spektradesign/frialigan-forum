@@ -1,0 +1,100 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+<h2>{L_TITLE}</h2>
+<p>{L_WATCHED_EXPLAIN}</p>
+
+<!-- IF .forumrow -->
+	<h3 class="section-header">{L_WATCHED_FORUMS}</h3>
+	
+	<ul class="itemlist itemlist--forums itemlist--cp">
+
+	<!-- BEGIN forumrow -->
+		<li class="itemlist__item {forumrow.FORUM_IMG_STYLE}">
+			<div class="item-inner">
+				<div class="item-col-icon">
+					<!-- IF forumrow.FORUM_IMAGE -->
+						<span class="forum-image">{forumrow.FORUM_IMAGE}</span>
+					<!-- ELSE -->
+						<i class="fi item-icon"></i>
+					<!-- ENDIF -->
+					<!-- IF forumrow.S_UNREAD_FORUM --><a href="{forumrow.U_VIEWFORUM}" class="icon-link"></a><!-- ENDIF -->
+				</div>
+				
+				<div class="item-col-main">
+					
+					<!-- EVENT topiclist_row_prepend -->
+					<a class="item-title" href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a>
+					<!-- IF forumrow.FORUM_DESC -->
+					<div class="item-info">{forumrow.FORUM_DESC}</div>
+					<!-- ENDIF -->
+				
+					<!-- IF forumrow.LAST_POST_TIME -->
+						<span class="item-lastpost--inline">
+							{L_LAST_POST} {L_POST_BY_AUTHOR} {forumrow.LAST_POST_AUTHOR_FULL}{L_COMMA_SEPARATOR}
+							<a href="{topicrow.U_LAST_POST}"><span class="timestamp">{forumrow.LAST_POST_TIME}</span></a>
+						</span>
+					<!-- ENDIF -->
+					
+				</div>
+				
+				<div class="item-col-lastpost">
+					
+					<!-- IF forumrow.LAST_POST_TIME -->
+						{forumrow.LAST_POST_AUTHOR_FULL}
+						<br />
+						<a href="{forumrow.U_LAST_POST}" class="item-lastpost__time"><span class="timestamp">{forumrow.LAST_POST_TIME}</span></a>
+					<!-- ELSE -->
+						{L_NO_POSTS}
+					<!-- ENDIF -->
+
+				</div>
+				
+				<div class="item-col-mark">
+					<input type="checkbox" name="f[{forumrow.FORUM_ID}]" id="f{forumrow.FORUM_ID}" />
+				</div>
+				
+			</div>
+		</li>
+	<!-- END forumrow -->
+	</ul>
+<!-- ELSEIF S_FORUM_NOTIFY -->
+  <div class="section-header">
+		<span>{L_WATCHED_FORUMS}</span>
+	</div>
+	<p class="panel">{L_NO_WATCHED_FORUMS}</p>
+<!-- ENDIF -->
+
+<!-- IF .topicrow -->
+	<div class="section-header">
+		{L_WATCHED_TOPICS} ({TOTAL_TOPICS})
+	</div>
+	<!-- INCLUDE components/topiclist/markable.html -->
+	
+	<div class="action-bar bottom">
+		<div class="right-side">
+			<!-- INCLUDE pagination.html -->
+		</div>
+	</div>
+
+<!-- ELSEIF S_TOPIC_NOTIFY -->
+  <div class="section-header">
+		{L_WATCHED_TOPICS}
+	</div>
+	<p class="panel">{L_NO_WATCHED_TOPICS}</p>
+<!-- ENDIF -->
+
+	
+	<!-- IF .forumrow or .topicrow -->
+		<fieldset class="display-actions">
+			<a href="#" data-marklist='["ucp",["t","f"]]' class="marklist-markall btn btn-default"><i class="fi fi-checkbox-multiple-marked"></i> <span class="btn-label">{L_MARK_ALL}</span></a>
+			<a href="#" data-marklist='["ucp",["t","f"]]' class="marklist-unmarkall btn btn-default"><i class="fi fi-checkbox-multiple-blank-outline"></i> <span class="btn-label">{L_UNMARK_ALL}</a>
+			<button type="submit" name="unwatch" value="{L_UNWATCH_MARKED}" class="btn btn-default"><i class="fi fi-eye-off"></i> {L_UNWATCH_MARKED}</button>
+			{S_FORM_TOKEN}
+		</fieldset>
+	<!-- ENDIF -->
+
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

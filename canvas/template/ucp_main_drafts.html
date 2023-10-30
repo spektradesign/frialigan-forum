@@ -1,0 +1,75 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="postform" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+<h2>{L_TITLE}</h2>
+
+	<p class="description">{L_DRAFTS_EXPLAIN}</p>
+
+<!-- IF S_EDIT_DRAFT -->
+
+		<!-- INCLUDE posting_editor.html -->
+		</div>
+	</div>
+
+			<fieldset class="submit-buttons">
+				{S_HIDDEN_FIELDS}<input type="reset" value="{L_RESET}" name="reset" class="button2" />&nbsp;
+				<input type="submit" name="submit" value="{L_SAVE}" class="button1" />
+				{S_FORM_TOKEN}
+			</fieldset>
+
+<!-- ELSE -->
+
+	<!-- IF .draftrow -->
+		<div class="section-header">{L_DRAFT_TITLE}</div>
+		
+		<ul class="st-itemlist genericlist cplist missing-column">
+
+		<!-- BEGIN draftrow -->
+			<li class="st-itemlist__item">
+			<div class="item-inner">
+				<div class="item-col item-col-main">
+					<a class="item-title" href="{draftrow.U_VIEW_EDIT}">{draftrow.DRAFT_SUBJECT}</a>
+					<div class="item-time-inline">
+						{L_SAVE_DATE}{L_COLON} <span class="timestamp">{draftrow.DATE}</span>
+						<span class="item-actions"><!-- IF draftrow.U_INSERT --><a href="{draftrow.U_INSERT}">{L_LOAD_DRAFT}</a> - <!-- ENDIF --><a href="{draftrow.U_VIEW_EDIT}">{L_VIEW_EDIT}</a></span>
+					</div>
+					<div class="item-info">
+						<!-- IF draftrow.S_LINK_TOPIC -->{L_TOPIC}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a>
+						<!-- ELSEIF draftrow.S_LINK_FORUM -->{L_FORUM}{L_COLON} <a href="{draftrow.U_VIEW}">{draftrow.TITLE}</a>
+						<!-- ELSEIF S_PRIVMSGS -->
+						<!-- ELSE -->{L_NO_TOPIC_FORUM}<!-- ENDIF -->
+					</div>
+				</div>
+				
+				<div class="item-col item-col-time">
+					<span class="timestamp">{draftrow.DATE}</span>
+					<div class="item-actions"><!-- IF draftrow.U_INSERT --><a href="{draftrow.U_INSERT}">{L_LOAD_DRAFT}</a> &bull; <!-- ENDIF --><a href="{draftrow.U_VIEW_EDIT}">{L_VIEW_EDIT}</a></div>
+				</div>
+				
+				<div class="item-col item-mark">
+					<input type="checkbox" name="d[{draftrow.DRAFT_ID}]" id="d{draftrow.DRAFT_ID}" />
+				</div>
+			</div>
+			</li>
+		<!-- END draftrow -->
+		</ul>
+	<!-- ELSE -->
+		<p class="panel">{L_NO_SAVED_DRAFTS}</p>
+	<!-- ENDIF -->
+
+	<!-- IF .draftrow -->
+	
+		<fieldset class="display-actions">
+			<a href="#" data-marklist='["postform",""]' class="marklist-markall btn btn-default"><i class="fi fi-checkbox-multiple-marked"></i> <span class="btn-label">{L_MARK_ALL}</span></a>
+			<a href="#" data-marklist='["postform",""]' class="marklist-unmarkall btn btn-default"><i class="fi fi-checkbox-multiple-blank-outline"></i> <span class="btn-label">{L_UNMARK_ALL}</a>
+			<button type="submit" name="delete" value="{L_DELETE_MARKED}" class="btn btn-danger"><i class="fi fi-close"></i> {L_DELETE_MARKED}</button>
+			{S_FORM_TOKEN}
+		</fieldset>
+	<!-- ENDIF -->
+
+<!-- ENDIF -->
+
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

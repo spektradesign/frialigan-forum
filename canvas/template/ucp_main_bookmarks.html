@@ -1,0 +1,38 @@
+<!-- INCLUDE ucp_header.html -->
+
+<form id="ucp" method="post" action="{S_UCP_ACTION}"{S_FORM_ENCTYPE}>
+
+<h2>{L_TITLE}</h2>
+<p class="description">{L_BOOKMARKS_EXPLAIN}</p>
+
+<!-- IF S_NO_DISPLAY_BOOKMARKS -->
+	<p class="alert alert-danger">{L_BOOKMARKS_DISABLED}</p>
+<!-- ELSE -->
+
+<!-- IF .topicrow -->
+	<h3 class="section-header">{L_BOOKMARKS} ({TOTAL_TOPICS})</h3>
+	<!-- INCLUDE components/topiclist/markable.html -->
+
+	<div class="action-bar bottom">
+		<div class="right-side">
+			<!-- INCLUDE pagination.html -->
+		</div>
+	</div>
+
+<!-- ELSE -->
+	<p class="panel">{L_NO_BOOKMARKS}</p>
+<!-- ENDIF -->
+
+<!-- ENDIF -->
+
+<!-- IF .topicrow and not S_NO_DISPLAY_BOOKMARKS -->
+	<fieldset class="display-actions">
+		<a href="#" data-marklist='["ucp",["t","f"]]' class="marklist-markall btn btn-default"><i class="fi fi-checkbox-multiple-marked"></i> <span class="btn-label">{L_MARK_ALL}</span></a>
+		<a href="#" data-marklist='["ucp",["t","f"]]' class="marklist-unmarkall btn btn-default"><i class="fi fi-checkbox-multiple-blank-outline"></i> <span class="btn-label">{L_UNMARK_ALL}</a>
+		<button type="submit" name="unbookmark" value="{L_REMOVE_BOOKMARK_MARKED}" class="btn btn-danger"><i class="fi fi-close"></i> {L_REMOVE_BOOKMARK_MARKED}</button>
+		{S_FORM_TOKEN}
+	</fieldset>
+<!-- ENDIF -->
+</form>
+
+<!-- INCLUDE ucp_footer.html -->

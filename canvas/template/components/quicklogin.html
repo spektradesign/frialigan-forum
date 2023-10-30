@@ -1,0 +1,31 @@
+<form method="post" action="{S_LOGIN_ACTION}" class="quicklogin-form">
+
+  <!-- EVENT st_oneall_quicklogin_hook -->
+  
+  <div class="input-group">
+	<span class="input-group-addon"><i class="fi fi-account"></i></span>
+	<input type="text" name="username" id="QL_username" class="quicklogin__username-input form-control" />
+  </div>
+	
+  <div class="input-group">
+	<span class="input-group-addon"><i class="fi fi-key"></i></span>
+	<input type="password" name="password" id="QL_password" class="quicklogin__password-input form-control" />
+  </div>
+  
+  <!-- IF S_AUTOLOGIN_ENABLED -->
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="autologin"> {L_LOG_ME_IN}
+    </label>
+  </div>
+  <!-- ENDIF -->
+  
+  <input type="submit" name="login" value="{L_LOGIN}" class="quicklogin__login-btn btn btn-success" />
+  
+  <!-- IF U_SEND_PASSWORD -->
+  <a class="quicklogin__forgot" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a>
+  <!-- ENDIF -->
+  
+  {S_LOGIN_REDIRECT}
+  
+</form>

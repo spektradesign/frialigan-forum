@@ -1,0 +1,41 @@
+<!-- INCLUDE overall_header.html -->
+
+<div class="page-header">
+<h2 class="page-title">{L_FAQ_TITLE}</h2>
+</div>
+
+<div class="row">
+<div class="col-sm-3">
+<a id="faqlinks-anchor" class="st-anchor"></a>
+<div id="faqlinks">
+	<!-- BEGIN faq_block -->
+	<div class="faqlinks__block collapsed">
+		<strong class="faqlinks__block__title" data-parent="#faqlinks" data-toggle="collapse" data-target="#faqlinks__block--{faq_block.S_ROW_COUNT}">{faq_block.BLOCK_TITLE}</strong>
+		<div class="collapse" id="faqlinks__block--{faq_block.S_ROW_COUNT}">
+			<!-- BEGIN faq_row -->
+			<a class="faqlinks__link" href="#f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}">{faq_block.faq_row.FAQ_QUESTION}</a>
+			<!-- END faq_row -->
+		</div>
+	</div>
+	<!-- END faq_block -->
+</div>
+</div>
+
+<div class="col-sm-9">
+<!-- BEGIN faq_block -->
+	<div class="st-panel faq-block">
+		<h2 class="faq-title">{faq_block.BLOCK_TITLE}</h2>
+		<!-- BEGIN faq_row -->
+			<dl class="faq">
+				<a id="f{faq_block.S_ROW_COUNT}r{faq_block.faq_row.S_ROW_COUNT}" class="st-anchor"></a>
+				<dt><strong>{faq_block.faq_row.FAQ_QUESTION}</strong></dt>
+				<dd>{faq_block.faq_row.FAQ_ANSWER}</dd>
+			</dl>
+		<!-- END faq_row -->
+	</div>
+<!-- END faq_block -->
+</div>
+</div>
+
+<!-- INCLUDE jumpbox.html -->
+<!-- INCLUDE overall_footer.html -->

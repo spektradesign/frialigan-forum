@@ -1,0 +1,92 @@
+
+<script>
+(function(){
+	var styleTag = document.getElementById('elementState_restore');
+
+	//restore alert states
+	for (var key in localStorage) {
+		if (key.indexOf('st_canvas_Alert_') == 0) {
+
+			var hidden 	= (localStorage[key]) ? true:false,
+					elm 		= document.getElementById(key.replace('st_canvas_Alert_',''));
+
+			if (elm && hidden) {
+				elm.style.display = 'none'
+				$(elm).data('hidden', true);
+			}
+
+		}
+	}
+	$('#page-body > .container > .alert').each(function(){
+		if (!$(this).data('hidden')) {
+			$(this).show();
+		}
+	})
+
+	if ($('body').hasClass('section-index')) {
+		var
+		catHead 	= $('.category-header'),
+		delay 		= parseFloat(catHead.css('transition-duration')) * 1000;
+
+		//animation-less collapse
+		catHead.css('transition','0s');
+		setTimeout(function(){
+			catHead.css('transition','')
+		},delay+100);
+
+		for(var key in localStorage){
+			if (key.indexOf('st_canvas_collapsible_') == 0) {
+				var $this = $('#'+key.replace('st_canvas_collapsible_', ''));
+
+				if (localStorage[key] == 'hidden') {
+					$this.removeClass('in').parent().addClass('collapsed');
+				}
+				else if (localStorage[key] == 'visible') {
+					$this.addClass('in').parent().removeClass('collapsed')
+				}
+			}
+		}
+
+	}
+
+	//import phpbb template variables ===========
+	phpbb.SCRIPT_NAME 				= "{SCRIPT_NAME}".split('/')[0];
+	$('body').addClass('section-'+phpbb.SCRIPT_NAME)
+	phpbb.PER_PAGE 						= "{PER_PAGE}";
+	phpbb.ON_PAGE 						= "{ON_PAGE}";
+	phpbb.PAGE_NUMBER 				= "{PAGE_NUMBER}";
+	_st.themePath 						= "{T_THEME_PATH}";
+	_st.THEMEPANEL_INSTALLED 	= <!-- IF SLICKPANEL_INSTALLED -->true<!-- ELSE -->false<!-- ENDIF -->;
+	_st.THEMEPANEL_LINK 			= "{SLICKPANEL_LINK}";
+	_st.THEMEPANEL_PAGE_LINK 	= "{SLICKPANEL_PAGE_LINK}";
+	_st.TOPIC_SOLVED_STYLE = '{TOPIC_SOLVED_STYLE}';
+	_st.TOPIC_SOLVED_TITLE = "{TOPIC_SOLVED_TITLE}";
+
+	//import language strings
+	_st.lang = {
+		topic: '{L_TOPIC}',
+		topics: '{L_TOPICS}',
+		topic_solved: '{L_TOPIC_SOLVED}'
+	};
+	_st.fpermissions = {
+		RULES_ATTACH_CAN: '{L_RULES_ATTACH_CAN}',
+		RULES_DELETE_CAN: '{L_RULES_DELETE_CAN}',
+		RULES_DOWNLOAD_CAN: '{L_RULES_DOWNLOAD_CAN}',
+		RULES_EDIT_CAN: '{L_RULES_EDIT_CAN}',
+		RULES_LOCK_CAN: '{L_RULES_LOCK_CAN}',
+		RULES_POST_CAN: '{L_RULES_POST_CAN}',
+		RULES_REPLY_CAN: '{L_RULES_REPLY_CAN}',
+		RULES_VOTE_CAN: '{L_RULES_VOTE_CAN}'
+	}
+	$(document).on('ready', function(){
+		_st.init({
+			stickyheader: "{ST_stickyheader}",
+			timestamps: "{ST_timestamps}",
+			fastclick: "{ST_fastclick}",
+			wysiwyg: "{ST_wysiwyg}",
+			quickscroll: "{ST_quickscroll}"
+		});
+	})
+
+})();
+</script>

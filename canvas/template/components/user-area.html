@@ -1,0 +1,84 @@
+<div class="user-area">
+  <!-- IF S_REGISTERED_USER -->
+  <div class="user-view" role="menu">
+	  
+	<!-- IF S_NOTIFICATIONS_DISPLAY -->
+	  <div class="dd-container user-view-notifications<!-- IF NOTIFICATIONS_COUNT gt 0 --> has-unread<!-- ENDIF -->" role="menuitem" aria-label="({NOTIFICATIONS_COUNT}) {L_NOTIFICATIONS}">
+		<a id="notification_list_button" href="{U_VIEW_ALL_NOTIFICATIONS}" data-placement="right" data-toggle="dropdown" title="{NOTIFICATIONS_COUNT} {L_NOTIFICATIONS}">
+		  <!-- IF NOTIFICATIONS_COUNT gt 0 -->
+		  <strong class="notification-count">{NOTIFICATIONS_COUNT}</strong>
+		  <!-- ENDIF -->
+		  <i class="fi fi-bell"></i>
+		</a>
+		<!-- INCLUDE notification_dropdown.html -->
+	  </div>
+	<!-- ENDIF -->
+
+
+	<!-- IF S_DISPLAY_PM -->
+	  <div class="user-view-pm<!-- IF PRIVATE_MESSAGE_COUNT gt 0 --> has-unread<!-- ENDIF -->" role="menuitem" aria-label="({PRIVATE_MESSAGE_COUNT}) {L_PRIVATE_MESSAGES}">
+		<a href="{U_PRIVATEMSGS}" data-placement="left" title="{PRIVATE_MESSAGE_COUNT} {L_PRIVATE_MESSAGES}">
+		  <!-- IF PRIVATE_MESSAGE_COUNT gt 0 -->
+			<span class="notification-count">{PRIVATE_MESSAGE_COUNT}</span>
+		  <!-- ENDIF -->
+		  <i class="fi fi-email"></i>
+		</a>
+	  </div>
+	<!-- ENDIF -->
+	
+	<div class="user-view-dropdown-wrapper dd-container drop-arrow">
+	  <a href="{U_PROFILE}" class="user-view-dropdown avatar" data-toggle="dropdown">
+		<!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR}
+		<!-- ELSE -->{$NO_AVATAR}<!-- ENDIF -->
+		<span class="user-view-username">{CURRENT_USERNAME_SIMPLE}</span>
+	  </a>
+	  <ul class="dropdown-menu user-view-dropdown-menu" role="menu">
+		<!-- IF U_RESTORE_PERMISSIONS --><li class="small-icon icon-restore-permissions"><a href="{U_RESTORE_PERMISSIONS}" role="menuitem" tabindex="-1"><i class="fi fi-undo"></i> {L_RESTORE_PERMISSIONS}</a></li><!-- ENDIF -->
+		
+		<!-- IF SLICKPANEL_INSTALLED and U_ACP and $SLICKPANEL_ONPAGE != 1 -->
+		<li>
+		  <a href="{SLICKPANEL_LINK}" title="Theme Panel" class="themepanel-link" role="menuitem" tabindex="-1"><i class="fi fi-palette"></i> SlickPanel</a>
+		</li>
+		<li role="presentation" class="divider"></li>
+		<!-- ENDIF -->
+		
+		<!-- IF U_ACP -->
+		<li class="small-icon icon-acp">
+		  <a href="{U_ACP}" title="{L_ACP}" role="menuitem" tabindex="-1" target="_blank"><i class="fi fi-settings"></i> {L_ACP}</a>
+		</li>
+		<!-- ENDIF -->
+		<!-- IF U_MCP -->
+		<li class="small-icon icon-mcp">
+		  <a href="{U_MCP}" title="{L_MCP}" role="menuitem" tabindex="-1"><i class="fi fi-gavel"></i> {L_MCP}</a>
+		</li>
+		<!-- ENDIF -->
+		
+		<!-- EVENT navbar_header_profile_list_before -->
+		<li class="small-icon icon-ucp"><a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem" tabindex="-1"><i class="fi fi-settings"></i> {L_PROFILE}</a></li>
+		<li class="small-icon icon-profile"><a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem" tabindex="-1"><i class="fi fi-account"></i> {L_READ_PROFILE}</a></li>
+		<!-- EVENT navbar_header_profile_list_after -->
+		<li role="presentation" class="divider"></li>
+		<li class="user-view-logout"><a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem" tabindex="-1"><i class="fi fi-power"></i>{L_LOGIN_LOGOUT}</a></li>
+	  </ul>
+	</div>
+  </div>
+  <!-- ELSE -->
+  <ul class="guest-view list-unstyled <!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->has-register<!-- ENDIF -->">
+	
+	
+	<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+	<li class="guest-register"><a class="btn btn-link" href="{U_REGISTER}" role="menuitem">{L_REGISTER}</a></li><!-- ENDIF -->
+	
+	<!-- IF not S_USER_LOGGED_IN and not S_IS_BOT -->
+	<li class="guest-login quicklogin dd-container">
+	  <a class="btn btn-link" href="{U_LOGIN_LOGOUT}" data-toggle="dropdown" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">{L_LOGIN_LOGOUT}</a>
+	  <div class="quicklogin-dropdown dropdown-menu" role="menu">
+		<!-- INCLUDE components/quicklogin.html -->
+	  </div>
+	</li>
+	<!-- ENDIF -->
+	
+	<!-- EVENT navbar_header_logged_out_content -->
+  </ul>
+  <!-- ENDIF -->
+</div>

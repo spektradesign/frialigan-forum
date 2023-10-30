@@ -1,0 +1,35 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- Index Alerts -->
+<!-- INCLUDE custom/alerts_index.html -->
+
+<div class="big-grid<!-- IF not ST_sidebar__index --> no-sidebar<!-- ENDIF -->">
+		<div class="col-maincontent">
+		<!-- EVENT index_body_forumlist_body_before -->
+		<!-- EVENT recent_topics_include -->
+		<!-- INCLUDE forumlist_body.html -->
+		<!-- EVENT index_body_forumlist_body_after -->
+		</div>
+		<!-- IF ST_sidebar__index !== '0' -->
+		<div class="col-sidebar">
+		<!-- EVENT st_sidebar_before -->
+		<!-- INCLUDE custom/sidebar_blocks.html -->
+		<!-- EVENT st_sidebar_after -->
+		</div>
+		<!-- ENDIF -->
+</div>
+
+<!-- EVENT index_body_stat_blocks_before -->
+
+<!-- Who is online -->
+<!-- INCLUDE widgets/whoisonline.html -->
+
+<!-- Statistics (shows only on index) -->
+<!-- INCLUDE widgets/statistics.html -->
+
+<!-- Birthdays -->
+<!-- INCLUDE widgets/birthdays.html -->
+
+<!-- EVENT index_body_stat_blocks_after -->
+
+<!-- INCLUDE overall_footer.html -->

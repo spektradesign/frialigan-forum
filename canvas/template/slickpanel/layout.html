@@ -1,0 +1,80 @@
+<div class="slickpanel-section">
+
+    <!-- #SETTING: Post Author Alignment -->
+    <div class="slickpanel-section__setting">
+        <div class="slickpanel-section__setting__label">
+            <strong>Post Author align</strong>
+            <p>Choose author profile alignment (in topic view)</p>
+        </div>
+        <div class="slickpanel-section__setting__input">
+            <select class="form-control"
+                name="ST_post_authorAlign"
+                data-manipulate='["body","class"]'
+                data-default='boxed'>
+                <option value="postAuthorAlign-left"" <!-- IF not ST_post_authorAlign or ST_post_authorAlign == 'postAuthorAlign-left'-->selected<!-- ENDIF -->>Left</option>
+                <option value="postAuthorAlign-right" <!-- IF ST_post_authorAlign == 'postAuthorAlign-right'-->selected<!-- ENDIF -->>Right</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- #SETTING: container type -->
+    <div class="slickpanel-section__setting">
+        <div class="slickpanel-section__setting__label">
+            <strong>Container</strong>
+            <p>Page container style</p>
+        </div>
+        <div class="slickpanel-section__setting__input">
+            <select class="form-control"
+                name="ST_container__type"
+                data-manipulate='["body","containerclass"]'
+                data-default='boxed'>
+                <option value="boxed" <!-- IF ST_container__type == 'boxed'-->selected<!-- ENDIF -->>Box</option>
+                <option value="stretched" <!-- IF ST_container__type == 'stretched'-->selected<!-- ENDIF -->>Wide</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- #SETTING: container width -->
+    <div class="slickpanel-section__setting">
+        <div class="slickpanel-section__setting__label">
+            <strong>Container width</strong>
+            <p>Container will not excced this width. Can be any valid unit (in px).</p>
+        </div>
+        <div class="slickpanel-section__setting__input">
+            <input  class="form-control" type="number"
+					name="ST_container__width"
+					data-manipulate='["{$SELECTOR__container_width}","css","max-width","px"]'
+					data-default="1300" min="1100" value="{ST_container__width}"
+						/>
+        </div>
+    </div>
+
+    <!-- #SETTING: Detached Breadcrumb -->
+    <div class="slickpanel-section__setting slickpanel-togglesetting">
+        <div class="slickpanel-section__setting__input">
+            <input type="checkbox"
+                   class="st-toggleswitch" id="sps__detachbc"
+                   data-toggleclass='[".breadcrumbs-bar","detached"]'
+                   name="ST_breadcrumbs__detach" <!-- IF ST_breadcrumbs__detach -->checked<!-- ENDIF -->
+                    />
+        </div>
+        <label for="sps__detachbc" class="slickpanel-section__setting__label">
+            <strong>Detached breadcrumb bar</strong>
+            <p>Display breadcrumb bar as a separate block (detach from neighbor)</p>
+        </label>
+    </div>
+
+    <!-- #SETTING: Sidebar -->
+    <div class="slickpanel-section__setting">
+        <div class="slickpanel-section__setting__label">
+            <strong>Sidebar display</strong>
+            <p>show sidebar on these pages</p>
+        </div>
+        <div class="slickpanel-section__setting__input">
+            <label><input type="checkbox" name="ST_sidebar__index" <!-- IF ST_sidebar__index !== '0' -->checked<!-- ENDIF --> /> Index</label>
+            <label><input type="checkbox" name="ST_sidebar__forum" <!-- IF ST_sidebar__forum -->checked<!-- ENDIF --> /> Forum</label>
+            <label><input type="checkbox" name="ST_sidebar__topic" <!-- IF ST_sidebar__topic -->checked<!-- ENDIF --> /> Topic</label>
+        </div>
+    </div>
+
+</div>

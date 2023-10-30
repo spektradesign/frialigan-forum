@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<!-- INCLUDE components/inc.html -->
+<!-- IF SLICKPANEL_INSTALLED --><!-- INCLUDE slickpanel/inc.html --><!-- ENDIF -->
+<html class="slickthemes no-js <!-- IF ST_pinchzoom -->pinchZoom<!-- ELSE -->no-pinchZoom<!-- ENDIF -->" dir="{S_CONTENT_DIRECTION}" lang="{S_USER_LANG}">
+<head>
+
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+	<!-- IF SCRIPT_NAME == 'viewforum' or SCRIPT_NAME == 'viewtopic' -->
+	<meta name="description" content="{FORUM_DESC}" /><!-- ENDIF -->
+
+	<!-- IF ST_pinchzoom -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3" />
+	<!-- ELSE -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" /><!-- ENDIF -->
+
+	{META}
+	<title>
+			<!-- IF UNREAD_NOTIFICATIONS_COUNT -->({UNREAD_NOTIFICATIONS_COUNT}) <!-- ENDIF -->
+			<!-- IF not S_VIEWTOPIC and not S_VIEWFORUM -->{SITENAME} - <!-- ENDIF -->
+			<!-- IF S_IN_MCP -->{L_MCP} - <!-- ELSEIF S_IN_UCP -->{L_UCP} - <!-- ENDIF -->
+			{PAGE_TITLE}
+			<!-- IF S_VIEWTOPIC or S_VIEWFORUM --> - {SITENAME}<!-- ENDIF -->
+	</title>
+
+	<!-- IF S_ENABLE_FEEDS -->
+		<!-- IF S_ENABLE_FEEDS_OVERALL --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {SITENAME}" href="{U_FEED}" /><!-- ENDIF -->
+		<!-- IF S_ENABLE_FEEDS_NEWS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_NEWS}" href="{U_FEED}?mode=news" /><!-- ENDIF -->
+		<!-- IF S_ENABLE_FEEDS_FORUMS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_ALL_FORUMS}" href="{U_FEED}?mode=forums" /><!-- ENDIF -->
+		<!-- IF S_ENABLE_FEEDS_TOPICS --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_NEW}" href="{U_FEED}?mode=topics" /><!-- ENDIF -->
+		<!-- IF S_ENABLE_FEEDS_TOPICS_ACTIVE --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FEED_TOPICS_ACTIVE}" href="{U_FEED}?mode=topics_active" /><!-- ENDIF -->
+		<!-- IF S_ENABLE_FEEDS_FORUM and S_FORUM_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_FORUM} - {FORUM_NAME}" href="{U_FEED}?f={S_FORUM_ID}" /><!-- ENDIF -->
+		<!-- IF S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID --><link rel="alternate" type="application/atom+xml" title="{L_FEED} - {L_TOPIC} - {TOPIC_TITLE}" href="{U_FEED}?f={S_FORUM_ID}&amp;t={S_TOPIC_ID}" /><!-- ENDIF -->
+	<!-- ENDIF -->
+
+	<!-- IF U_CANONICAL -->
+		<link rel="canonical" href="{U_CANONICAL}" />
+	<!-- ENDIF -->
+
+	<!-- IF SLICKPANEL_INSTALLED -->
+	<style type="text/css">
+	    html.slickthemes {
+			overflow-y: scroll;
+		  <!-- IF ST_body__bgimg_url -->
+			background-image: <!-- IF ST_body__bgimg_url == 'none' -->none<!-- ELSE -->url("{T_THEME_PATH}/images/backgrounds/{ST_body__bgimg_url}")<!-- ENDIF -->;
+		  <!-- ENDIF -->
+
+		  <!-- IF ST_body__bgimg_pos -->
+		  	background-position: {ST_body__bgimg_pos};
+		  <!-- ELSE -->
+		  	background-position: 0 0;
+		  <!-- ENDIF -->
+
+		  <!-- IF ST_body__bgimg_size -->
+			background-size: {ST_body__bgimg_size};
+		  <!-- ELSE -->
+		  	background-size: cover;
+		  <!-- ENDIF -->
+			background-color: {ST_body__bgcolor};
+			background-attachment: fixed;
+		}
+	</style>
+	<!-- ENDIF -->
+
+	<!-- IF S_CONTENT_DIRECTION eq 'rtl' -->
+		<link href="{T_THEME_PATH}/css/main_rtl.min.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" type="text/css" media="screen" />
+	<!-- ELSE -->
+		<link href="{T_THEME_PATH}/css/main.min.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" type="text/css" media="screen" /><!-- ENDIF -->
+
+	<link href="{T_THEME_PATH}/css/mdi.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" type="text/css">
+
+	<link href="{T_THEME_PATH}/print.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" type="text/css" media="print" title="printonly" />
+
+	<!-- IF SLICKPANEL_INSTALLED -->
+	<!-- INCLUDE slickpanel/css.html --><!-- ENDIF -->
+
+	<!-- INCLUDE custom/extra_css.html -->
+
+	<!-- IF S_PLUPLOAD -->
+		<link href="{T_THEME_PATH}/plupload.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" type="text/css" media="screen, projection" />
+	<!-- ENDIF -->
+
+	<!-- EVENT overall_header_head_append -->
+
+	{$STYLESHEETS}
+	<!-- IF U_ACP and THEMEPANEL_INSTALLED -->
+		<link href="{T_THEME_PATH}/css/spectrum/spectrum.css" rel="stylesheet" type="text/css" />
+		<link href="{T_THEME_PATH}/css/themepanel.css" rel="stylesheet" type="text/css" />
+	<!-- ENDIF -->
+
+	<!-- EVENT overall_header_stylesheets_after -->
+
+	<style id="elementState_restore" type="text/css"></style>
+	<script type="text/javascript">
+		window._st = window._st || {};
+		_st.onloadfunctions = _st.onloadfunctions || [];
+		_st.utils = {};
+	</script>
+
+</head>
+<body id="phpbb" class="section-{SCRIPT_NAME} {S_CONTENT_DIRECTION} {BODY_CLASS}{$ST_post_authorAlign}{$ST_container__type}{$ST_roundAvatars} {ST_navbar__pos}">
+<div id="st-bgimg"></div>

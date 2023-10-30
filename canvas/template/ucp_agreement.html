@@ -1,0 +1,76 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF S_SHOW_COPPA or S_REGISTRATION -->
+
+<!-- IF S_LANG_OPTIONS -->
+<script type="text/javascript">
+// <![CDATA[
+	/**
+	* Change language
+	*/
+	function change_language(lang_iso)
+	{
+		document.cookie = '{COOKIE_NAME}_lang=' + lang_iso + '; path={COOKIE_PATH}';
+		document.forms['register'].change_lang.value = lang_iso;
+		document.forms['register'].submit();
+	}
+
+// ]]>
+</script>
+
+	<form method="post" action="{S_UCP_ACTION}" id="register" class="langselector">
+		<div class="input-group">
+		<label for="lang" class="input-group-addon" id="sizing-addon2">{L_LANGUAGE}{L_COLON}</label>
+		<select name="lang" class="form-control" id="lang" onchange="change_language(this.value); return false;" title="{L_LANGUAGE}">{S_LANG_OPTIONS}</select>
+		</div>
+		{S_HIDDEN_FIELDS}
+	</form>
+
+	<div class="clear"></div>
+
+<!-- ENDIF -->
+
+	<form method="post" action="{S_UCP_ACTION}" id="agreement">
+
+	<div class="st-panel">
+		<div class="inner">
+		<div class="content">
+			<div class="page-header">
+				<h2 class="page-title">{SITENAME} - {L_REGISTRATION}</h2>
+			</div>
+			<!-- EVENT ucp_agreement_terms_before -->
+			<p><!-- IF S_SHOW_COPPA -->{L_COPPA_BIRTHDAY}<!-- ELSE -->{L_TERMS_OF_USE}<!-- ENDIF --></p>
+			<!-- EVENT ucp_agreement_terms_after -->
+		</div>
+		</div>
+	</div>
+
+	<fieldset class="submit-buttons">
+		<!-- IF S_SHOW_COPPA -->
+			<strong><a href="{U_COPPA_NO}" class="button1">{L_COPPA_NO}</a></strong>&nbsp; <a href="{U_COPPA_YES}" class="button2">{L_COPPA_YES}</a>
+		<!-- ELSE -->
+			<button type="submit" value="{L_AGREE}" name="agreed" id="agreed" class="btn btn-success"><i class="fi fi-check"></i> {L_AGREE}</button>&nbsp;
+			<button type="submit"value="{L_NOT_AGREE}"  name="not_agreed" class="btn btn-default"><i class="fi fi-close"></i> {L_NOT_AGREE}</button>
+		<!-- ENDIF -->
+		{S_HIDDEN_FIELDS}
+		{S_FORM_TOKEN}
+	</fieldset>
+	
+	</form>
+
+<!-- ELSEIF S_AGREEMENT -->
+
+	<div class="panel">
+		<div class="inner">
+		<div class="content">
+			<h2 class="sitename-title">{SITENAME} - {AGREEMENT_TITLE}</h2>
+			<p>{AGREEMENT_TEXT}</p>
+			<hr class="dashed" />
+			<p><a href="{U_BACK}" class="button2">{L_BACK}</a></p>
+		</div>
+		</div>
+	</div>
+
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,28 @@
+<!-- IF SEARCH_TOPIC or S_IN_MCP or S_SEARCH_ACTION -->
+<div class="panel-bare">
+	<!-- IF S_DISPLAY_JUMPBOX && S_IN_MCP -->
+	<div class="dd-container jumpbox-container" id="jumpbox">
+		<a href="javascript:void(0)" data-toggle="dropdown" class="btn btn-default" title="<!-- IF S_IN_MCP and S_MERGE_SELECT -->{L_SELECT_TOPICS_FROM}<!-- ELSE -->{L_MODERATE_FORUM}<!-- ENDIF -->">
+			<!-- IF S_MERGE_SELECT -->{L_SELECT_TOPICS_FROM}
+			<!-- ELSE -->{L_MODERATE_FORUM}
+			<!-- ENDIF -->
+			<i class="fi fi-menu-up"></i>
+		</a>
+		
+		<ul class="dropdown-menu jumpbox-dropdown" role="menu">
+			<!-- BEGIN jumpbox_forums -->
+				<!-- IF jumpbox_forums.FORUM_ID neq -1 -->
+					<li <!-- BEGIN level -->class="jumpbox-subforum"<!-- END level -->><a href="{jumpbox_forums.LINK}" role="menuitem" tabindex="-1"><span>{jumpbox_forums.FORUM_NAME}</span></a></li>
+				<!-- ENDIF -->
+			<!-- END jumpbox_forums -->
+		</ul>
+	</div>
+	<!-- ENDIF -->
+
+	<!-- IF SEARCH_TOPIC -->
+		<p class="jumpbox-return"><a class="btn btn-link" href="{U_SEARCH_TOPIC}" accesskey="r"><i class="fi fi-chevron-{S_CONTENT_FLOW_BEGIN}"></i> {L_RETURN_TO_TOPIC}</a></p>
+	<!-- ELSEIF S_SEARCH_ACTION -->
+		<p class="jumpbox-return"><a class="btn btn-link" href="{U_SEARCH}" title="{L_SEARCH_ADV}" accesskey="r"><i class="fi fi-chevron-{S_CONTENT_FLOW_BEGIN}"></i> {L_GO_TO_SEARCH_ADV}</a></p>
+	<!-- ENDIF -->
+</div>
+<!-- ENDIF -->

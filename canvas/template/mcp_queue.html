@@ -1,0 +1,118 @@
+<!-- INCLUDE mcp_header.html -->
+
+<form id="mcp" method="post" action="{S_MCP_ACTION}">
+
+<fieldset class="forum-selection">
+	<select name="f" id="fo">{S_FORUM_OPTIONS}</select>
+	<button type="submit" name="sort" value="{L_GO}" title="{L_GO}" class="btn btn-default"><i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
+	{S_FORM_TOKEN}
+</fieldset>
+
+<h2>{L_TITLE}</h2>
+<p>{L_EXPLAIN}</p>
+
+	<!-- IF .postrow -->
+		<div class="action-bar top">
+			<div class="right-side">
+				<!-- INCLUDE pagination.html -->
+			</div>
+		</div>
+
+		<h3 class="st-section__header">{TOTAL}</h3>
+		
+		<ul class="itemlist itemlist--mcp itemlist--has-colbar">
+			<li class="itemlist__item itemlist__item--colbar">
+				<div class="item-inner">
+					<div class="item-col-main"><!-- IF S_TOPICS -->{L_TOPIC}<!-- ELSE -->{L_POST}<!-- ENDIF --></div>
+					<div class="item-col-moderation"><!-- IF not S_TOPICS -->{L_TOPIC} &amp; <!-- ENDIF -->{L_FORUM}</div>
+					<div class="item-col-mark">{L_MARK}</div>
+				</div>
+			</li>
+
+		<!-- BEGIN postrow -->
+
+		<!-- IF postrow.S_DELETED_TOPIC -->
+			<li class="itemlist__item itemlist__item--deleted">{L_DELETED_TOPIC}</li>
+		<!-- ELSE -->
+
+			<li class="itemlist__item">
+				<div class="item-inner">
+				
+					<div class="item-col-main">
+						<a href="{postrow.U_VIEW_DETAILS}" class="item-title">{postrow.POST_SUBJECT}</a> <!-- IF postrow.ATTACH_ICON_IMG --><i class="fi fi-attachment has-tooltip" title="{L_TOTAL_ATTACHMENTS}"></i><!-- ENDIF -->
+						<div class="item-info">{L_POSTED} {L_POST_BY_AUTHOR} {postrow.POST_AUTHOR_FULL}{L_COMMA_SEPARATOR} <span class="timestamp">{postrow.POST_TIME}</span></div>
+						
+						<!-- IF not S_IS_BOT -->
+						<div class="item-col-moderation--inline">
+							{L_TOPIC}{L_COLON} <a href="{postrow.U_TOPIC}">{postrow.TOPIC_TITLE}</a> <br />
+							{L_FORUM}{L_COLON} <a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a>
+						</div>
+						<!-- ENDIF -->
+					</div>
+					
+					<div class="item-col-moderation">
+						{L_TOPIC}{L_COLON} <a href="{postrow.U_TOPIC}">{postrow.TOPIC_TITLE}</a> <br />
+						{L_FORUM}{L_COLON} <a href="{postrow.U_VIEWFORUM}">{postrow.FORUM_NAME}</a>
+					</div>
+					
+					<div class="item-col-mark">
+						<!-- IF S_TOPICS -->
+							<input type="checkbox" name="topic_id_list[]" value="{postrow.TOPIC_ID}" />
+						<!-- ELSE -->
+							<input type="checkbox" name="post_id_list[]" value="{postrow.POST_ID}" />
+						<!-- ENDIF -->
+					</div>
+					
+				</div>
+			</li>
+		<!-- ENDIF -->
+		<!-- END postrow -->
+		</ul>
+
+		<fieldset class="display-options">
+			<label>{L_DISPLAY_POSTS}{L_COLON} {S_SELECT_SORT_DAYS}</label>
+			<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label><label>{S_SELECT_SORT_DIR}</label>
+			<!-- IF TOPIC_ID --><label><input type="checkbox" class="radio" name="t" value="{TOPIC_ID}" checked="checked" />&nbsp; <strong>{L_ONLY_TOPIC}</strong></label><!-- ENDIF -->
+			<button type="submit" name="sort" value="{L_GO}" class="btn btn-link"><i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
+		</fieldset>
+
+		
+	<div class="action-bar bottom">
+		<div class="right-side">
+			<!-- INCLUDE pagination.html -->
+		</div>
+	</div>
+
+	<!-- ELSE -->
+		<p class="st-panel notopics"><strong>
+			<!-- IF S_RESTORE -->
+				<!-- IF S_TOPICS -->{L_NO_TOPICS_DELETED}<!-- ELSE -->{L_NO_POSTS_DELETED}<!-- ENDIF -->
+			<!-- ELSE -->
+				<!-- IF S_TOPICS -->{L_NO_TOPICS_QUEUE}<!-- ELSE -->{L_NO_POSTS_QUEUE}<!-- ENDIF -->
+			<!-- ENDIF -->
+		</strong></p>
+	<!-- ENDIF -->
+	
+<!-- IF .postrow -->
+	<fieldset class="display-actions">
+		
+		<!-- IF S_TOPICS -->
+		<a href="#" data-marklist='["mcp","topic_id_list"]' class="marklist-markall btn btn-default"><i class="fi fi-checkbox-multiple-marked"></i> <span class="btn-label">{L_MARK_ALL}</span></a>
+		<a href="#" data-marklist='["mcp","topic_id_list"]' class="marklist-unmarkall btn btn-default"><i class="fi fi-checkbox-multiple-blank-outline"></i> <span class="btn-label">{L_UNMARK_ALL}</a>
+		<!-- ELSE -->
+		<a href="#" data-marklist='["mcp","post_id_list"]' class="marklist-markall btn btn-default"><i class="fi fi-checkbox-multiple-marked"></i> <span class="btn-label">{L_MARK_ALL}</span></a>
+		<a href="#" data-marklist='["mcp","post_id_list"]' class="marklist-unmarkall btn btn-default"><i class="fi fi-checkbox-multiple-blank-outline"></i> <span class="btn-label">{L_UNMARK_ALL}</a>
+		<!-- ENDIF -->
+		
+		<!-- IF S_RESTORE -->
+		<button class="btn btn-danger" type="submit" name="action[delete]" value="{L_DELETE}"><i class="fi fi-delete"></i> {L_DELETE}</button>
+		<button class="btn btn-success" type="submit" name="action[restore]" value="{L_RESTORE}"><i class="fi fi-reload"></i> {L_RESTORE}</button>
+		<!-- ELSE -->
+		<button class="btn btn-default" type="submit" name="action[disapprove]" value="{L_DISAPPROVE}"><i class="fi fi-close"></i> {L_DISAPPROVE}</button>
+		<button class="btn btn-success" type="submit" name="action[approve]" value="{L_APPROVE}"><i class="fi fi-check"></i> {L_APPROVE}</button>
+		<!-- ENDIF -->
+	</fieldset>
+<!-- ENDIF -->
+</form>
+
+<!-- INCLUDE mcp_footer.html -->

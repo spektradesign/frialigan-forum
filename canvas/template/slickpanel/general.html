@@ -1,0 +1,270 @@
+<!-- Nav tabs -->
+<ul class="slickpanel-innernav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#features" role="tab" data-toggle="tab">Features</a></li>
+  <li ><a href="#gAnalytics" role="tab" data-toggle="tab">Analytics</a></li>
+  <li ><a href="#postAuthor" role="tab" data-toggle="tab">Topic Author</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content slickpanel-innernav-content">
+  <div role="tabpanel" class="tab-pane active" id="features">
+    <!-- subsection: features ================== -->
+    <div class="slickpanel-section">
+
+        <!-- #SETTING: WYSIWYG editor -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps-wysiwyg"
+                       name="ST_wysiwyg" <!-- IF ST_wysiwyg != '0' -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps-wysiwyg" class="slickpanel-section__setting__label">
+                <strong>WYSIWYG Editor <span class="label label-info">Recommended</span></strong>
+                <p>Enable SCEditor for wysiwyg editing. Recommended</p>
+            </label>
+        </div>
+
+        <!-- #SETTING: Grayscale icons -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps-grayscaleicons"
+                       name="ST_grayscale_icons" <!-- IF ST_grayscale_icons -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps-grayscaleicons" class="slickpanel-section__setting__label">
+                <strong>Dim stale forum-icons</strong>
+                <p>Dim and grayscale icons/images of forums that have no new content</p>
+            </label>
+        </div>
+
+        <!-- #SETTING: Relative timstamps -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps-timestamps"
+                       name="ST_timestamps" <!-- IF ST_timestamps != '0' -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps-timestamps" class="slickpanel-section__setting__label">
+                <strong>Relative Timstamps</strong>
+                <p>Show relative time (e.g. "4 hours ago", "last month") instead of absoulte date. Does not work with non-english & non-default timestamp settings</p>
+            </label>
+        </div>
+
+        <!-- #SETTING: Sticky header -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps__stickyheader"
+                        name="ST_stickyheader" <!-- IF ST_stickyheader != '0' -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps__stickyheader" class="slickpanel-section__setting__label">
+                <strong>Sticky header</strong>
+                <p>Always keep header on top</p>
+            </label>
+        </div>
+
+        <!-- #SETTING: Round avatars -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps__roundAvatars"
+                       data-toggleclass='["body","roundAvatars-enabled"]'
+                        name="ST_roundAvatars" <!-- IF ST_roundAvatars -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps__roundAvatars" class="slickpanel-section__setting__label">
+                <strong>Round avatars</strong>
+                <p>round and round</p>
+            </label>
+        </div>
+
+        <!-- #SETTING: Modern stats -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps__modernitemstats"
+                        name="ST_modern_item_stats" <!-- IF ST_modern_item_stats != '0' -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps__modernitemstats" class="slickpanel-section__setting__label">
+                <strong>Modern stats display</strong>
+                <p>Modern statistics style in viewforum section</p>
+            </label>
+        </div>
+
+        <!-- #SETTING: Quick scroll -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps__quickscroll"
+                        name="ST_quickscroll" <!-- IF ST_quickscroll -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps__quickscroll" class="slickpanel-section__setting__label">
+                <strong>Quick scroll</strong>
+                <p>Floating buttons to quickly scroll to top or bottom of the page (only shows on long pages)</p>
+            </label>
+        </div>
+
+        <!-- #SETTING: Complex footer -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps__complexfooter"
+                       name="ST_complex_footer" <!-- IF ST_complex_footer -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps__complexfooter" class="slickpanel-section__setting__label">
+                <strong>Complex footer</strong>
+                <p>Enable complex footer. Edit <code>styles/canvas/template/custom/complex_footer.html</code> to customize</p>
+            </label>
+        </div>
+
+
+        <!-- #SETTING: Pinch zoom -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input  type="checkbox"
+                        class="st-toggleswitch" id="sps__pinchzoom"
+                        name="ST_pinchzoom" <!-- IF ST_pinchzoom -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps__pinchzoom" class="slickpanel-section__setting__label">
+                <strong>Pinch zoom</strong>
+                <p>Allow pinch zooming on touch devices.</p>
+            </label>
+        </div>
+
+
+
+        <!-- #SETTING: Fast click -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input  type="checkbox"
+                        class="st-toggleswitch" id="sps__fastclick"
+                        name="ST_fastclick" <!-- IF ST_fastclick != '0' -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps__fastclick" class="slickpanel-section__setting__label">
+                <strong>Fastclick <span class="label label-info">Recommended</span></strong>{slickthemes.fastclick}
+                <p>Remove 300ms tap delay on touch devices<br>
+                <em>Does not affect no-touch devices at all. fastclicks.js is loaded only on touch devices</em></p>
+            </label>
+        </div>
+
+    <!-- #SETTING: OneAll -->
+    <div class="slickpanel-section__setting slickpanel-togglesetting">
+        <div class="slickpanel-section__setting__input">
+            <input type="checkbox"
+                   class="st-toggleswitch" id="sps-oneall"
+                   name="ST_oneall__header" <!-- IF ST_oneall__header != '0' -->checked<!-- ENDIF -->
+                    />
+        </div>
+        <label for="sps-oneall" class="slickpanel-section__setting__label">
+            <strong>OneAll in header [<a href="https://docs.oneall.com/plugins/guide/social-login-phpbb/3.1/">oneall extension</a>]</strong>
+            <p>If disabled, oneAll will show in sidebar. Regardless of this setting its always shown in quicklogin and registration</p>
+        </label>
+    </div>
+
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="gAnalytics">
+    <!-- subsection: Analytics ================== -->
+    <div class="slickpanel-section">
+
+        <!-- #SETTING: Google analytics -->
+        <div class="slickpanel-section__setting">
+            <div class="slickpanel-section__setting__label">
+                <strong>Google Analytics Tracking ID</strong>
+                <p>Paste your your google analytics tracking ID here. Leave empty to disable
+                <br>The ID looks something like UA-XXXXXXXX-X
+                </p>
+            </div>
+            <div class="slickpanel-section__setting__input">
+                <input class="form-control" type="text"
+                       name="ST_g_analytics_ID"
+                       value='{ST_g_analytics_ID}' />
+            </div>
+        </div>
+
+          <!-- #SETTING: Clicky analytics -->
+          <div class="slickpanel-section__setting">
+              <div class="slickpanel-section__setting__label">
+                  <strong>Clicky site ID</strong>
+                  <p>Enter your site ID here (You can find site ID in <code>preferences -> info -> site information</code>) Leave empty to disable<br>
+                  The theme uses asynchronous tracking code</p>
+              </div>
+              <div class="slickpanel-section__setting__input">
+                  <input class="form-control" type="text"
+                         name="ST_c_analytics_ID"
+                         value='{ST_c_analytics_ID}' />
+              </div>
+          </div>
+
+        <div class="alert alert-info">
+          <strong>Custom tracking code:</strong> If you wish to manually insert your tracking code, leave both of the above fields empty and add your code in <code>styles/canvas/template/custom/extra_js.html</code>.
+        </div>
+
+    </div>
+  </div>
+
+
+
+  <div role="tabpanel" class="tab-pane" id="postAuthor">
+    <!-- subsection: postAuthor ================== -->
+    <div class="slickpanel-section">
+
+
+        <!-- #SETTING: Topic Author Label -->
+        <div class="slickpanel-section__setting slickpanel-togglesetting">
+            <div class="slickpanel-section__setting__input">
+                <input type="checkbox"
+                       class="st-toggleswitch" id="sps__topicAuthorLabel"
+                        name="ST_topicAuthorLabel" <!-- IF ST_topicAuthorLabel != '0' -->checked<!-- ENDIF -->
+                        />
+            </div>
+            <label for="sps__topicAuthorLabel" class="slickpanel-section__setting__label">
+                <strong>Display</strong>
+                <p>Show "Topic Author" label under topic author's avatar</p>
+            </label>
+        </div>
+
+
+        <!-- #SETTING: TopicAuthor Label Text -->
+        <div class="slickpanel-section__setting">
+            <div class="slickpanel-section__setting__label">
+                <strong>Label Text</strong>
+            </div>
+            <div class="slickpanel-section__setting__input">
+                <input class="form-control" type="text"
+                       name="ST_topicAuthorLabel__text"
+                       data-manipulate='[".topic-author-label .label","text"]'
+                        data-default="{L_TOPIC} {L_AUTHOR}"
+                        value="{ST_topicAuthorLabel__text}"
+                       placeholder="Default" />
+            </div>
+        </div>
+
+
+        <!-- #SETTING: TopicAuthor Label background -->
+        <div class="slickpanel-section__setting">
+            <div class="slickpanel-section__setting__label">
+                <strong>Label background color</strong>
+            </div>
+            <div class="slickpanel-section__setting__input">
+                <input class="form-control" type="text"
+                        data-colorchange='[".topic-author-label .label","background-color"]'
+                       name="ST_topicAuthorLabel__bg"
+                       value="{ST_topicAuthorLabel__bg}" />
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+
+</div>

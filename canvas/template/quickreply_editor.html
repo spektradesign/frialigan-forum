@@ -1,0 +1,47 @@
+<form method="post" action="{U_QR_ACTION}" id="qr_postform">
+<!-- EVENT quickreply_editor_panel_before -->
+<div class="quickreply">
+	<div class="quickreply__avatar avatar">
+		<!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR}
+		<!-- ELSE -->{$NO_AVATAR}<!-- ENDIF -->
+	</div>
+	<input type="text" name="subject" id="subject" size="45" maxlength="124" tabindex="2" value="{SUBJECT}" class="hidden inputbox autowidth" />
+	<!-- EVENT quickreply_editor_message_before -->
+	<div id="message-box">
+		<textarea placeholder="{L_QUICKREPLY}..." name="message" rows="7" cols="76" tabindex="3" class="inputbox"></textarea>
+	</div>
+	<!-- EVENT quickreply_editor_message_after -->
+	<fieldset class="submit-buttons">
+		{S_FORM_TOKEN}
+		{QR_HIDDEN_FIELDS}
+		<button type="submit" accesskey="f" tabindex="6" name="preview" value="{L_FULL_EDITOR}" class="btn btn-default" id="qr_full_editor">{L_FULL_EDITOR}</button>&nbsp;
+		<button type="submit" accesskey="s" tabindex="7" name="post" value="{L_SUBMIT}" class="btn btn-success">{L_SUBMIT}</button>
+	</fieldset>
+</div>
+<!-- EVENT quickreply_editor_panel_after -->
+</form>
+<!-- IF ST_wysiwyg != 0 -->
+<script type="text/javascript">
+	_st.onloadfunctions.push(function(){
+		//reply page editor
+		if (Modernizr.touch && $(window).width() < 1024) {
+			return false;
+		}
+		_st.sceInit = function(){
+			var txtarea = $('textarea[name=message]');
+			txtarea.height(140).sceditor({
+				plugins: "bbcode",
+				fonts: '',
+				enablePasteFiltering: true,
+				toolbar: "source|bold,italic,underline,stike|bulletlist,orderedlist|size,color,removeformat|image,code,quote,link,unlink",
+				style: "{T_THEME_PATH}/css/sceditor.css",
+				emoticonsEnabled: false,
+				colors: '#fff, #aaa, #555, #000,#16a085,#27ae60,#2980b9,#8e44ad,#2c3e50,#c0392b,#d35400,#f39c12'
+			});
+			_st.sceditor = txtarea.sceditor('instance');
+		}
+
+		_st.sceSetup();
+	})
+</script>
+<!-- ENDIF -->
