@@ -122,6 +122,52 @@
 	</div>
 	<!-- ENDIF -->
 
+
+<!-- IF .topicrow and not S_DISPLAY_ACTIVE -->
+<div class="action-bar top">
+	<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
+		<div class="buttons">
+			<!-- EVENT viewforum_buttons_bottom_before -->
+
+			<!-- IF S_IS_LOCKED -->
+			<a href="{U_POST_NEW_TOPIC}" class="btn btn-danger btn-createnew locked" title="{L_FORUM_LOCKED}">
+				<i class="fi fi-lock"></i> {L_BUTTON_FORUM_LOCKED}
+			</a>
+			<!-- ELSE -->
+			<a href="{U_POST_NEW_TOPIC}" class="btn btn-success btn-createnew" title="{L_POST_TOPIC}">
+				{L_BUTTON_NEW_TOPIC}
+			</a>
+			<!-- ENDIF -->
+
+			<!-- EVENT viewforum_buttons_bottom_after -->
+		</div>
+	<!-- ENDIF -->
+
+	<!-- IF S_DISPLAY_SEARCHBOX -->
+	<div class="search-box" role="search">
+		<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
+		<div class="input-group">
+			<input class="search form-control" type="search" name="keywords" id="search_keywords" size="20" placeholder="" />
+			<span class="input-group-btn">
+			<button class="btn btn-secondary" type="submit" title="{L_SEARCH}">{L_SEARCH}</button>
+			<a href="{U_SEARCH}" class="btn btn-default" title="{L_SEARCH_ADV}"><i class="fi fi-settings"></i></a>
+			</span>
+		</div>
+		{S_SEARCH_LOCAL_HIDDEN_FIELDS}
+		</form>
+	</div>
+	<!-- ENDIF -->
+
+	<div class="right-side">
+		<!-- IF not S_IS_BOT and U_MARK_TOPICS and .topicrow --><a href="{U_MARK_TOPICS}" class="btn mark-read btn-default" data-ajax="mark_topics_read"><i class="fi fi-check-all"></i>  {L_MARK_TOPICS_READ}</a> <!-- ENDIF -->
+		<!--{TOTAL_TOPICS}-->
+		<!-- IF .pagination -->
+			<!-- INCLUDE pagination.html -->
+		<!-- ENDIF -->
+	</div>
+</div>
+<!-- ENDIF -->
+
 	<!-- IF topicrow.S_FIRST_ROW or not topicrow.S_TOPIC_TYPE_SWITCH -->
 		<div class="forumbg<!-- IF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) --> announcements<!-- ENDIF -->">
 		<div class="inner">
@@ -299,27 +345,12 @@
 				</a>
 				<!-- ELSE -->
 				<a href="{U_POST_NEW_TOPIC}" class="btn btn-success btn-createnew" title="{L_POST_TOPIC}">
-					<i class="fi fi-plus"></i> {L_BUTTON_NEW_TOPIC}
+					{L_BUTTON_NEW_TOPIC}
 				</a>
 				<!-- ENDIF -->
 
 				<!-- EVENT viewforum_buttons_bottom_after -->
 			</div>
-		<!-- ENDIF -->
-
-		<!-- IF S_DISPLAY_SEARCHBOX -->
-		<div class="search-box" role="search">
-			<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
-			<div class="input-group">
-				<input class="search form-control" type="search" name="keywords" id="search_keywords" size="20" placeholder="" />
-				<span class="input-group-btn">
-				<button class="btn btn-secondary" type="submit" title="{L_SEARCH}">{L_SEARCH}</button>
-				<a href="{U_SEARCH}" class="btn btn-default" title="{L_SEARCH_ADV}"><i class="fi fi-settings"></i></a>
-				</span>
-			</div>
-			{S_SEARCH_LOCAL_HIDDEN_FIELDS}
-			</form>
-		</div>
 		<!-- ENDIF -->
 
 		<div class="right-side">
@@ -338,7 +369,7 @@
 	<!-- IF S_DISPLAY_ONLINE_LIST -->
 	<div class="col-md-6">
 	<div class="hoverbox online-list">
-		<h3 class="block-header"><i class="fi fi-earth"></i> <!-- IF U_VIEWONLINE --><a href="{U_VIEWONLINE}">{L_WHO_IS_ONLINE}</a><!-- ELSE -->{L_WHO_IS_ONLINE}<!-- ENDIF --></h3>
+		<h3 class="block-header"><!-- IF U_VIEWONLINE --><a href="{U_VIEWONLINE}">{L_WHO_IS_ONLINE}</a><!-- ELSE -->{L_WHO_IS_ONLINE}<!-- ENDIF --></h3>
 		<div class="block-content">{LOGGED_IN_USER_LIST}</div>
 	</div>
 	</div>

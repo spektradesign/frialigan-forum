@@ -43,7 +43,7 @@
 			</a>
 			<!-- ELSE -->
 			<a href="{U_POST_REPLY_TOPIC}" class="btn btn-success btn-createnew" title="{L_POST_REPLY}">
-				<i class="fi fi-plus"></i> {L_BUTTON_POST_REPLY}
+				{L_BUTTON_POST_REPLY}
 			</a>
 			<!-- ENDIF -->
 		<!-- ENDIF -->
@@ -58,9 +58,9 @@
 		<div class="search-box">
 			<form method="get" id="topic-search" action="{S_SEARCHBOX_ACTION}">
 			<div class="input-group">
-				<input class="search form-control" type="search" name="keywords" id="search_keywords" size="20" placeholder="{L_SEARCH_TOPIC}" />
+				<input class="search form-control" type="search" name="keywords" id="search_keywords" size="20" placeholder="" />
 				<span class="input-group-btn">
-				<button class="btn btn-default" type="submit" title="{L_SEARCH}"><i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
+				<button class="btn btn-secondary" type="submit" title="{L_SEARCH}">{L_SEARCH}</button>
 				<a href="{U_SEARCH}" class="btn btn-default" title="{L_SEARCH_ADV}"><i class="fi fi-settings"></i></a>
 				</span>
 			</div>
@@ -78,6 +78,18 @@
 	<!-- ENDIF -->
 	<!-- EVENT viewtopic_body_pagination_top_after -->
 </div>
+
+<!-- IF S_NUM_POSTS > 1 or .pagination -->
+<form id="viewtopic" method="post" action="{S_TOPIC_ACTION}">
+	<fieldset class="display-options" style="margin-top: 0; ">
+		<!-- IF not S_IS_BOT -->
+		<label>{L_DISPLAY_POSTS}{L_COLON} {S_SELECT_SORT_DAYS}</label>
+		<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label> <label>{S_SELECT_SORT_DIR}</label>
+		<button type="submit" name="sort" value="{L_GO}" class="btn btn-link"><i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
+		<!-- ENDIF -->
+	</fieldset>
+</form>
+<!-- ENDIF -->
 
 <!-- IF S_HAS_POLL -->
 	<form method="post" action="{S_POLL_ACTION}" data-ajax="vote_poll" class="topic_poll <!-- IF not S_DISPLAY_RESULTS -->result-hidden<!-- ENDIF -->">
@@ -269,7 +281,7 @@
 				<!-- ENDIF -->
 				<!-- IF postrow.U_QUOTE -->
 					<li>
-						<a href="{postrow.U_QUOTE}" title="{L_REPLY_WITH_QUOTE}" class="button has-tooltip icon-button quote-icon"><span>{L_QUOTE}</span></a>
+						<a href="{postrow.U_QUOTE}" title="{L_REPLY_WITH_QUOTE}" class="button"><span>{L_REPLY_WITH_QUOTE}</span></a>
 					</li>
 				<!-- ENDIF -->
 				<!-- EVENT viewtopic_body_post_buttons_after -->
@@ -360,18 +372,6 @@
 	<!-- INCLUDE quickreply_editor.html -->
 <!-- ENDIF -->
 
-<!-- IF S_NUM_POSTS > 1 or .pagination -->
-	<form id="viewtopic" method="post" action="{S_TOPIC_ACTION}">
-	<fieldset class="display-options" style="margin-top: 0; ">
-		<!-- IF not S_IS_BOT -->
-		<label>{L_DISPLAY_POSTS}{L_COLON} {S_SELECT_SORT_DAYS}</label>
-		<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label> <label>{S_SELECT_SORT_DIR}</label>
-		<button type="submit" name="sort" value="{L_GO}" class="btn btn-link"><i class="fi fi-arrow-{S_CONTENT_FLOW_END}"></i></button>
-		<!-- ENDIF -->
-	</fieldset>
-	</form>
-<!-- ENDIF -->
-
 <!-- EVENT viewtopic_body_topic_actions_before -->
 <div class="action-bar bottom">
 	<div class="buttons">
@@ -384,7 +384,7 @@
 			</a>
 			<!-- ELSE -->
 			<a href="{U_POST_REPLY_TOPIC}" class="btn btn-success btn-createnew" title="{L_POST_REPLY}">
-				<i class="fi fi-plus"></i> {L_BUTTON_POST_REPLY}
+				{L_BUTTON_POST_REPLY}
 			</a>
 			<!-- ENDIF -->
 		<!-- ENDIF -->
