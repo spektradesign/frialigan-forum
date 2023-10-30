@@ -14,9 +14,8 @@
 			<dt><label for="{PASSWORD_CREDENTIAL}">{L_PASSWORD}</label></dt>
 			<dd><input type="password" tabindex="2" id="{PASSWORD_CREDENTIAL}" name="{PASSWORD_CREDENTIAL}" size="25" class="inputbox autowidth" autocomplete="off" /></dd>
 			<!-- IF S_DISPLAY_FULL_LOGIN and (U_SEND_PASSWORD or U_RESEND_ACTIVATION) -->
-				<dd>&nbsp;</dd>
-				<!-- IF U_SEND_PASSWORD --><dd><a class="btn btn-sm btn-default" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a></dd><!-- ENDIF -->
-				<!-- IF U_RESEND_ACTIVATION --><dd><a class="btn btn-sm btn-default" href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a></dd><!-- ENDIF -->
+				<!-- IF U_SEND_PASSWORD --><dd><a class="Link" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a></dd><!-- ENDIF -->
+				<!-- IF U_RESEND_ACTIVATION --><dd><a class="Link" href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a></dd><!-- ENDIF -->
 			<!-- ENDIF -->
 		</dl>
 		<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
