@@ -4379,7 +4379,6 @@ select:focus, .form-control:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: none;
-  z-index: 5;
   /*outline: -webkit-focus-ring-color auto 5px;*/
 }
 
@@ -5859,7 +5858,7 @@ ul.pagination-xs > li > span {
 }
 
 .itemlist__item a.item-lastpost__time:hover {
-  color: #555555;
+  color: var(--color-light);
 }
 
 .itemlist__item .item-col-mark {
@@ -7238,7 +7237,7 @@ fieldset[disabled] .btn-min-link {
 }
 
 .btn-link:hover, .btn-link:focus, .btn-min-link:hover, .btn-min-link:focus {
-  color: #B54444;
+  color: var(--color-light);
   text-decoration: none;
   background-color: transparent;
 }
@@ -7619,11 +7618,6 @@ input[type="button"].btn-block {
 /* Round avatar */
 .round-avatars a.user-view-dropdown > img, .round-avatars .notification-item img {
   border-radius: 1000px;
-}
-
-/*Dim text*/
-fieldset__ dt, .text-dim, .description, .attachbox, .jumpbox-return a, .ucp-section__description, .ucp-section__headerlinks a, .topic-poll .poll-info, .topic-poll .poll_option_percent, .topic-poll .vote-submitted {
-  color: #919191;
 }
 
 #widget-statistics {
@@ -11612,7 +11606,8 @@ span.lastpostavatar img {
 }
 
 .itemlist--topics a.globaltopic-parentforum:hover {
-  color: #B54444;
+  text-decoration: underline;
+  color: var(--color-light);
 }
 
 .itemlist--topics .item-col-pagination {

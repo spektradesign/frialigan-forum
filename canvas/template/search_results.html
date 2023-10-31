@@ -20,8 +20,8 @@
 		<div class="search-box search-box--full" role="search">
 			<form method="post" action="{S_SEARCH_ACTION}">
 			<fieldset>
-				<input class="inputbox search tiny" type="search" name="add_keywords" id="add_keywords" value="" placeholder="{L_SEARCH_IN_RESULTS}" />
-				<button class="btn btn-default" type="submit" title="{L_SEARCH}"><i class="fi fi-magnify"></i></button>
+				<input class="inputbox search tiny" type="search" name="add_keywords" id="add_keywords" value="" placeholder="" />
+				<button class="btn btn-default" type="submit" title="{L_SEARCH}">{L_SEARCH}</button>
 				<a href="{U_SEARCH}" class="btn btn-default" title="{L_SEARCH_ADV}"><i class="fi fi-settings"></i></a>
 			</fieldset>
 			</form>
@@ -37,6 +37,20 @@
 <!-- ENDIF -->
 
 <!-- IF S_SHOW_TOPICS -->
+
+	<!-- IF .pagination or .searchresults or S_SELECT_SORT_KEY or S_SELECT_SORT_DAYS -->
+	<form method="post" action="{S_SEARCH_ACTION}">
+
+		<fieldset class="display-options">
+			<!-- IF S_SELECT_SORT_DAYS or S_SELECT_SORT_KEY -->
+				<label><!-- IF S_SHOW_TOPICS -->{L_DISPLAY_POSTS}<!-- ELSE -->{L_SORT_BY}</label><label><!-- ENDIF --> {S_SELECT_SORT_DAYS}<!-- IF S_SELECT_SORT_KEY --></label> <label>{S_SELECT_SORT_KEY}</label>
+				<label>{S_SELECT_SORT_DIR}<!-- ENDIF --></label>
+				<input type="submit" name="sort" value="{L_GO}" class="button2" />
+			<!-- ENDIF -->
+		</fieldset>
+
+	</form>
+<!-- ENDIF -->
 
 	<!-- IF .searchresults -->
 	<div class="forumbg">
@@ -142,11 +156,11 @@
 				<!-- ELSE -->
 				<div class="item-col-stats">
 					<span class="item-stat--v2 item-stat--views">
-						<span class="item-stat__count"><span class="formatted-numcounter">{searchresults.TOPIC_VIEWS}</span></span>
 						<span class="item-stat__label">{L_VIEWS}</span>
+						<span class="item-stat__count"><span class="formatted-numcounter">{searchresults.TOPIC_VIEWS}</span></span>
 					</span>
 					<span class="item-stat--v2 item-stat--posts has-tooltip" data-placement="left" title="{searchresults.TOPIC_REPLIES} {L_REPLIES}">
-						<span class="item-stat__label"><i class="fi fi-comment-multiple-outline"></i></span>
+						<span class="item-stat__label">{L_REPLIES}</span>
 						<span class="item-stat__count"><span class="formatted-numcounter">{searchresults.TOPIC_REPLIES}</span></span>
 					</span>
 				</div>
@@ -220,20 +234,6 @@
 			</div>
 		</div>
 	<!-- END searchresults -->
-<!-- ENDIF -->
-
-<!-- IF .pagination or .searchresults or S_SELECT_SORT_KEY or S_SELECT_SORT_DAYS -->
-	<form method="post" action="{S_SEARCH_ACTION}">
-
-	<fieldset class="display-options">
-		<!-- IF S_SELECT_SORT_DAYS or S_SELECT_SORT_KEY -->
-			<label><!-- IF S_SHOW_TOPICS -->{L_DISPLAY_POSTS}<!-- ELSE -->{L_SORT_BY}</label><label><!-- ENDIF --> {S_SELECT_SORT_DAYS}<!-- IF S_SELECT_SORT_KEY --></label> <label>{S_SELECT_SORT_KEY}</label>
-			<label>{S_SELECT_SORT_DIR}<!-- ENDIF --></label>
-			<input type="submit" name="sort" value="{L_GO}" class="button2" />
-		<!-- ENDIF -->
-	</fieldset>
-
-	</form>
 <!-- ENDIF -->
 
 <!-- IF .pagination or .searchresults or PAGE_NUMBER -->
