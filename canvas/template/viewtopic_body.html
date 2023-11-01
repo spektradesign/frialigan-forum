@@ -299,8 +299,8 @@
 			<!-- IF postrow.S_POST_UNAPPROVED -->
 			<form method="post" class="mcp_approve" action="{postrow.U_APPROVE_ACTION}">
 				<p class="post-notice unapproved">
-					<button type="submit" class="btn btn-success" value="{L_APPROVE}" name="action[approve]"><i class="fi fi-check"></i> {L_APPROVE}</button>
-					<button type="submit" class="btn btn-default" value="{L_DISAPPROVE}" name="action[disapprove]"><i class="fi fi-close"></i> {L_DISAPPROVE}</button>
+					<button type="submit" class="btn btn-success" value="{L_APPROVE}" name="action[approve]">{L_APPROVE}</button>
+					<button type="submit" class="btn btn-default" value="{L_DISAPPROVE}" name="action[disapprove]">{L_DISAPPROVE}</button>
 					<input type="hidden" name="post_id_list[]" value="{postrow.POST_ID}" />
 					{S_FORM_TOKEN}
 				</p>
