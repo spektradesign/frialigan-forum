@@ -9974,7 +9974,7 @@ a.notification-mark-read.icon-mark .fi {
   background-repeat: repeat;
   background-color: #4d4d5c;
   background-image: url(../images/backgrounds/poly.png);
-  height: 60vh;
+  height: 50vh;
   /*navbar below header*/
 }
 
@@ -10903,7 +10903,7 @@ li.jumpbox-subforum a span:before {
 }
 
 .itemlist--forums [class*="item-col-"] {
-  padding: var(--spacing-sm) 0;
+  padding: var(--spacing-xs) 0;
 }
 
 .itemlist--forums .item-col-icon {
