@@ -114,15 +114,6 @@
 
 <!-- ENDIF -->
 
-<!-- BEGIN topicrow -->
-
-	<!-- IF not topicrow.S_TOPIC_TYPE_SWITCH and not topicrow.S_FIRST_ROW -->
-		</ul>
-		</div>
-	</div>
-	<!-- ENDIF -->
-
-
 <!-- IF .topicrow and not S_DISPLAY_ACTIVE -->
 <div class="action-bar top">
 	<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
@@ -167,6 +158,14 @@
 	</div>
 </div>
 <!-- ENDIF -->
+
+<!-- BEGIN topicrow -->
+
+	<!-- IF not topicrow.S_TOPIC_TYPE_SWITCH and not topicrow.S_FIRST_ROW -->
+		</ul>
+		</div>
+	</div>
+	<!-- ENDIF -->
 
 	<!-- IF topicrow.S_FIRST_ROW or not topicrow.S_TOPIC_TYPE_SWITCH -->
 		<div class="forumbg<!-- IF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) --> announcements<!-- ENDIF -->">
