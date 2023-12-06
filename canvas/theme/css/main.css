@@ -5538,7 +5538,7 @@ ul.pagination-xs > li > span {
 
 .itemlist__item:nth-child(even) {
   /* alternating row color */
-  background: #F8f8f8;
+  background: #292929;
 }
 
 .itemlist__item:first-child {
@@ -6241,7 +6241,7 @@ label.fancyInput_label {
 .st-editor__box textarea,
 .st-editor__box #message {
   width: 100%;
-  background: #E7E7E7;
+  background: #292929;
   padding: 8px;
   resize: vertical;
 }
@@ -6961,7 +6961,6 @@ div.sceditor-group:last-child {
 
 #tabs {
   padding: 5px 5px 0 5px;
-  background: #41454b;
 }
 
 @media (min-width: 480px) {
@@ -6998,12 +6997,7 @@ div.sceditor-group:last-child {
 #tabs > ul > .activetab > a {
   color: inherit;
   font-weight: bold;
-  background: #EFEFEF;
-}
-
-#tabs > ul > .activetab > a:hover {
-  background: #EFEFEF;
-  color: inherit;
+  background: #292929;
 }
 
 #tabs > ul > .dropdown-visible > a {
@@ -7975,7 +7969,6 @@ a.item-title {
 
 .no-content {
   padding: 8px 15px;
-  background-color: #EFEFEF;
   margin-bottom: 15px;
 }
 
@@ -11123,10 +11116,6 @@ li.jumpbox-subforum a span:before {
   }
 }
 
-.itemlist .itemlist__item {
-  border-bottom: var(--border);
-}
-
 .itemlist .itemlist__item:first-of-type {
   border-top: var(--border);
 }
@@ -11630,7 +11619,7 @@ span.lastpostavatar img {
 @media (min-width: 768px) {
   .itemlist--topics .pagination {
     display: block;
-    float: right;
+    float: left;
   }
 }
 
@@ -11971,10 +11960,10 @@ h3#review + #topicreview {
 }
 
 #topicreview .post {
-  border-color: #e4e4e4;
+  border-color: #292929;
   margin-bottom: 8px;
   border-radius: 0;
-  background: white;
+  background: #292929;
 }
 
 #topicreview .post:last-child {
@@ -13589,7 +13578,6 @@ blockquote cite {
   width: 100%;
   display: inline-block;
   margin-top: 15px;
-  background: #fff;
   /*Heading*/
   /*Section headers*/
 }
@@ -13743,7 +13731,7 @@ h3 + .st-section__subheader {
 #cp-navigation .cp-nav-list #active-subsection a {
   -webkit-box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
           box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.08);
-  background: #fff;
+  background: #292929;
   padding: 11px 20px;
   color: inherit;
   border-left: 3px solid #CF6363;
@@ -13783,7 +13771,6 @@ h3 + .st-section__subheader {
 /* Friends list, pm legend etc
  -----------------------------*/
 .cp-mini {
-  background: #fff;
   margin-top: 15px;
   max-height: 200px;
   overflow-y: auto;
