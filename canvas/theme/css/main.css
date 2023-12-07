@@ -12823,17 +12823,6 @@ li.header dl.icon dt .list-inner {
   }
 }
 
-.postbody .postlink {
-  border-bottom: 1px solid #2D76D7;
-}
-
-.postbody .postlink:hover, .postbody .postlink:focus {
-  border-bottom-color: #215eb0;
-  color: #215eb0;
-  background-color: #eef4fc;
-  text-decoration: none;
-}
-
 .postbody .author {
   color: var(--color-contrast-light);
   font-size: var(--font-size-xs);
