@@ -23,7 +23,7 @@ jobs:
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
-          passphrase: ${{ secrets.SSH_PWD }}
+          password: ${{ secrets.SSH_PWD }}
           target: ${{ secrets.REMOTE_FOLDER }}
           rm: false
           source: "canvas/*"
