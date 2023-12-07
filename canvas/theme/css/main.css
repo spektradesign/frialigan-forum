@@ -7763,6 +7763,12 @@ a.item-title {
   margin-left: auto;
 }
 
+@media (min-width: 2000px) {
+  #page-body {
+    max-width: calc(56vw + 320px) !important;
+  }
+}
+
 @media (min-width: 768px) {
   #page-body {
     overflow: visible;
@@ -9973,7 +9979,7 @@ a.notification-mark-read.icon-mark .fi {
   background-position: center 10%;
   background-repeat: repeat;
   background-color: #4d4d5c;
-  background-image: url(../images/backgrounds/poly.png);
+  background-image: url(../images/backgrounds/banner.jpeg);
   height: 50vh;
   /*navbar below header*/
 }
@@ -9984,6 +9990,12 @@ a.notification-mark-read.icon-mark .fi {
   display: table;
   max-width: 1440px !important;
   margin: 0 auto;
+}
+
+@media (min-width: 2000px) {
+  .main-header .container {
+    max-width: calc(56vw + 320px) !important;
+  }
 }
 
 .main-header.transparent {
