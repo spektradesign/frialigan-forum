@@ -5710,7 +5710,7 @@ ul.pagination-xs > li > span {
 
 .itemlist__item .item-info {
   font-family: var(--font-beaufort);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-xxs);
   color: var(--color-contrast-light);
 }
 
@@ -5805,14 +5805,14 @@ ul.pagination-xs > li > span {
 .itemlist__item .item-stat__label {
   font-family: var(--font-futura-bold);
   text-transform: uppercase;
-  font-size: var(--font-size-xxs);
+  font-size: calc(var(--font-size-xxs) - 2px);
 }
 
 .itemlist__item .item-col-stats .item-stat__count {
   display: block;
   font-family: var(--font-beaufort);
   color: var(--color-contrast-light);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-xxs);
 }
 
 .itemlist__item .item-stats--inline {
@@ -5851,7 +5851,7 @@ ul.pagination-xs > li > span {
 .itemlist__item .item-lastpost__time, .itemlist__item .item-lastpost__info {
   font-family: var(--font-beaufort);
   color: var(--color-contrast-light);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-xxs);
 }
 
 .itemlist__item a.item-lastpost__time:hover {
@@ -7102,8 +7102,8 @@ fieldset[disabled] .button2 {
   cursor: pointer;
   text-transform: uppercase;
   font-family: var(--font-futura-bold);
-  font-size: var(--font-size-xxs);
-  line-height: var(--line-height-xxs);
+  font-size: calc( var(--font-size-xxs) - 2px);
+  line-height: calc( var(--line-height-xxs) - 2px);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.36px;
   transition: 0.3s ease;
@@ -7542,7 +7542,7 @@ input[type="button"].btn-block {
 
 /* Title font */
 .st-itemlist__item .item-title, .itemlist__item .item-title, .topictitle {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xxs);
   font-family: 'futura-pt-bold';
 }
 
@@ -9001,8 +9001,8 @@ dl.details dd .fa {
   transition: box-shadow .3s, -webkit-box-shadow .3s;
   font-family: var(--font-futura-bold);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-xxs);
-  line-height: 1.3em;
+  font-size: calc(var(--font-size-xxs) - 3px);
+  line-height: calc(var(--line-height-xxs) - 3px);
   color: var(--color-contrast-light);
   padding: var(--spacing-sm) 0;
   border-bottom: var(--border);
@@ -9148,7 +9148,7 @@ dl.details dd .fa {
 .nav-area > li > a {
   display: inline-block;
   padding: 0;
-  margin: 0 var(--spacing-xs);
+  margin: 0 var(--spacing-xxs);
   text-decoration: none;
   color: inherit;
   text-transform: uppercase;
@@ -9451,10 +9451,10 @@ li.quick-links > a:hover {
   background-image: none;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: var(--font-size-xxs);
-  line-height: 1.3em;
+  font-size: calc(var(--font-size-xxs) - 3px);
+  line-height: calc(var(--line-height-xxs) - 3px);
   padding: 0;
-  margin: 0 var(--spacing-xs);
+  margin: 0 var(--spacing-xxs);
 }
 
 .user-area li > .btn:hover,
@@ -9972,13 +9972,8 @@ a.notification-mark-read.icon-mark .fi {
 }
 
 .main-header {
-  -webkit-background-size: cover;
-          background-size: cover;
-  background-position: center 10%;
-  background-repeat: repeat;
-  background-color: #4d4d5c;
-  background-image: url(../images/backgrounds/banner.jpeg);
-  height: 25vh;
+  height: 100%;
+  padding-top: 2rem;
   /*navbar below header*/
 }
 
@@ -10084,7 +10079,7 @@ a.notification-mark-read.icon-mark .fi {
   -webkit-box-shadow: none;
           box-shadow: none;
   width: 120px;
-  border: 0;
+  border: var(--border);
   color: inherit;
   padding: 0px 12px;
   height: 50px;
@@ -10828,6 +10823,7 @@ li.jumpbox-subforum a span:before {
   color: inherit;
   text-decoration: none;
   display: inline-block;
+  font-size: var(--font-size-md);
 }
 
 .category-header .totaltopics {
@@ -11115,7 +11111,8 @@ li.jumpbox-subforum a span:before {
 
 .itemlist--forums .item-lastpost__title {
   font-family: var(--font-futura-bold);
-  font-size: var(--font-size-xxs);
+  font-size: calc( var(--font-size-xxs) - 2px);
+  line-height: calc( var(--line-height-xxs) - 2px);
   color: var(--color-light);
 }
 
@@ -11144,7 +11141,7 @@ li.jumpbox-subforum a span:before {
 .itemlist--forums--full .item-info {
   display: block;
   font-family: var(--font-beaufort);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-xxs);
 }
 
 .itemlist--forums--full .item-lastpost--inline {
@@ -12814,6 +12811,8 @@ li.header dl.icon dt .list-inner {
   table-layout: fixed;
   word-wrap: break-word;
   clear: both;
+  font-family: var(--font-beaufort);
+  font-size: calc(var(--font-size-xs) - 2px);
 }
 
 @media (min-width: 768px) {
@@ -13044,6 +13043,7 @@ blockquote cite {
   margin-top: 15px;
   padding: 15px;
   border-top: 1px solid #E7E7E7;
+  font-size: calc(var(--font-size-xs) - 2px);
 }
 
 .postbody .video-embed-wrapper {
@@ -13405,7 +13405,7 @@ select option {
 
 .widget-header {
   font-family: var(--font-futura-bold);
-  font-size: var(--font-size-xs);
+  font-size: calc( var(--font-size-xs) - 3px);
   line-height: var(--line-height-xs);
   font-weight: bold;
   text-transform: uppercase;
@@ -13420,7 +13420,7 @@ select option {
 }
 
 .widget-content {
-  font-size: var(--font-size-xxxs);
+  font-size: calc(var(--font-size-xxxs) - 2px);
   line-height: 1.3;
 }
 
@@ -13467,6 +13467,7 @@ select option {
 #widget-statistics p {
   font-family: var(--font-futura-bold);
   margin-bottom: 5px;
+  font-size: calc( var(--font-size-xs) - 6px);
 }
 
 #widget-statistics p:last-child {
@@ -13477,8 +13478,8 @@ select option {
   color: var(--color-contrast-light);
   margin-left: 8px;
   font-family: var(--font-futura);
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-xs);
+  font-size: var(--font-size-xxs);
+  line-height: var(--line-height-xxs);
   text-transform: none;
   font-weight: 100;
 }
@@ -13963,7 +13964,7 @@ ul.recipients .button2 {
 }
 
 .itemlist [class*='item-col-'] {
-  padding: var(--spacing-sm) 0;
+  padding: var(--spacing-xxs) 0;
 }
 
 .itemlist--cp .item-col-lastpost {
